@@ -15,12 +15,14 @@ class RejectController extends Controller
 
     public function index()
     {
-       $jenis_reject = "Kulit Jeruk";
-       $keterangan = " balabaal";
-       $penyebab ="badsfuiwfew";
-       $solusi = "ehdiuewfhiew";
-       $gambar = "hidahcifadcf";
+    //    $jenis_reject = "Kulit Jeruk";
+    //    $keterangan = " balabaal";
+    //    $penyebab ="badsfuiwfew";
+    //    $solusi = "ehdiuewfhiew";
+    //    $gambar = "hidahcifadcf";
+        $data = Reject::all();
+        // dd($data);
 
-        return view('index', compact('jenis_reject','keterangan','penyebab','solusi','gambar'));
+        return view('index', compact('data'));
     }
 }

@@ -20,7 +20,6 @@ class CreateRejectsTable extends Migration
             $table->string('penyebab');
             $table->string('solusi');
             $table->string('gambar');
-            $table->date('tanggal');
             $table->timestamps();
         });
     }

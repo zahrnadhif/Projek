@@ -20,18 +20,20 @@
                               </tr>
                             </thead>
                             <tbody>
-                              {{-- @forelse ($rejects as $reject) --}}
-                                <tr>
-                                    <td>{{ $jenis_reject }}</td>
-                                    <td>{{ $keterangan }}</td>
-                                    <td>{{ $penyebab }}</td>
-                                    <td>{{ $solusi }}</td>
-                                    <td>{{ $gambar }}</td>
-                                    <td class="text-center">
-                                        <button type="submit" class="btn btn-primary mx-1">Edit</button>
-                                        <button type="submit" class="btn btn-danger">Hapus</button>
-                                    </td>
-                                </tr>
+                            @foreach($data as $datas)
+                            <tr>
+                                <td>{{ $datas->reject }}</td>
+                                <td>{{ $datas->keterangan }}</td>
+                                <td>{{ $datas->penyebab }}</td>
+                                <td>{{ $datas->solusi }}</td>
+                                <td>{{ $datas->gambar }}</td>
+                                <td class="text-center">
+                                    <button type="submit" class="btn btn-primary mx-1">Edit</button>
+                                    <button type="submit" class="btn btn-danger">Hapus</button>
+                                </td>
+                            </tr>
+                            @endforeach
+                                
                               {{-- @empty --}}
                                   <div class="alert alert-danger">
                                       Data Reject belum Tersedia.
