@@ -19,7 +19,11 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', [RejectController::class, 'dashboard']);
-Route::get('/index', [RejectController::class, 'index']);
+Route::get('/index', [RejectController::class, 'index'])->name('index');
+
+Route::get('/tambah', [RejectController::class, 'tambah']);
+Route::post('/insertData', [RejectController::class, 'insertData']);
+Route::get('/tampilkanData/{ID}', [RejectController::class, 'tampilkanData']);
 
 // Route::get('/tablet', function(){
 //     return view('tablet.tablet');

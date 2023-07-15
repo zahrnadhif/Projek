@@ -15,14 +15,23 @@ class RejectController extends Controller
 
     public function index()
     {
-    //    $jenis_reject = "Kulit Jeruk";
-    //    $keterangan = " balabaal";
-    //    $penyebab ="badsfuiwfew";
-    //    $solusi = "ehdiuewfhiew";
-    //    $gambar = "hidahcifadcf";
         $data = Reject::all();
-        // dd($data);
-
         return view('index', compact('data'));
+    }
+
+    public function tambah(){
+        return view('tambah');
+    }
+
+    public function insertData(Request $request){
+        // dd($request->all());
+        Reject::create($request->all());
+        return redirect()->route('index')->with('success','Data Berhasil Di Tambahkan');
+    }
+
+    public function tampilkanData($id){
+        $data = Reject::find($id);
+        
+        
     }
 }

@@ -3,8 +3,15 @@
 
 <div class="main-content">
     <div class="container-fluid mt-5">
-        <button type="submit" class="btn btn-success">Tambah</button>
+        <a href="/tambah" type="button" class="btn btn-success">Tambah</a>
         <div class="row mt-3">
+            @if($message = Session::get('success'))
+                <div class="alert alert-success" role="alert">
+                    {{ $message }}
+                </div>
+            @else
+                
+            @endif
             <div class="col-md-12">
                 <div class="card border-0 shadow rounded">
                     <div class="card-body">    
@@ -28,8 +35,8 @@
                                 <td>{{ $datas->solusi }}</td>
                                 <td>{{ $datas->gambar }}</td>
                                 <td class="text-center">
-                                    <button type="submit" class="btn btn-primary mx-1">Edit</button>
-                                    <button type="submit" class="btn btn-danger">Hapus</button>
+                                    <a href="/tampilkanData/{{$datas->id}}" class="btn btn-primary mx-1">Edit</a>
+                                    <button type="button" class="btn btn-danger">Hapus</button>
                                 </td>
                             </tr>
                             @endforeach
