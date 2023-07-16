@@ -5,7 +5,7 @@
     <div class="container-fluid">
         <div class="row my-2 justify-content-center">
             <div class="col-8 text-center fs-1 fw-semibold">
-                Tambah data pegawai
+                  data pegawai
             </div>
         </div>
         <div class="row justify-content-center">
@@ -32,7 +32,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="gambar" class="form-label">Upload Gambar</label>
-                            <input type="text" name="gambar" class="form-control" id="gambar">
+                            <input type="file" name="gambar" class="form-control">
                         </div>
                        
                         <button type="submit" class="btn btn-primary">Submit</button>

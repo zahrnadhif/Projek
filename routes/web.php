@@ -19,11 +19,16 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', [RejectController::class, 'dashboard']);
-Route::get('/index', [RejectController::class, 'index'])->name('index');
 
-Route::get('/tambah', [RejectController::class, 'tambah']);
+Route::get('/index', [RejectController::class, 'index'])->name('index');
+//nambah data
+Route::get('/tambahData', [RejectController::class, 'tambahData']);
 Route::post('/insertData', [RejectController::class, 'insertData']);
-Route::get('/tampilkanData/{ID}', [RejectController::class, 'tampilkanData']);
+//update data
+Route::get('/tampilkanData/{id}', [RejectController::class, 'tampilkanData']);
+Route::post('/updateData/{id}', [RejectController::class, 'updateData']);
+//delete data
+Route::get('/deleteData/{id}', [RejectController::class, 'deleteData']);
 
 // Route::get('/tablet', function(){
 //     return view('tablet.tablet');
