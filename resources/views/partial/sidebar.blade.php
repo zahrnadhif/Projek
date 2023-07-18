@@ -3,12 +3,12 @@
         <div class="sb-sidenav-menu">
             <div class="nav">
                 <div class="sb-sidenav-menu-heading"></div>
-                <a class="nav-link" href="{{ url('/home') }}">
+                <a class="nav-link" href="{{ url('/dashboard') }}">
                     <div class="sb-nav-link-icon"><i class="fa-solid fa-house-laptop fa-lg"></i></div>
                     Dashboard
                 </a>
                 <hr class="sidebar-divider my-1">
-                {{-- <div class="sb-sidenav-menu-heading"></div> --}}
+
                 <a class="nav-link collapsed" href="/" data-bs-toggle="collapse" data-bs-target="#collapseProduction" aria-expanded="false" aria-controls="collapseProduction">
                     <div class="sb-nav-link-icon"><i class="fa-solid fa-gears fa-lg" href="/prod"></i></div>
                     Production

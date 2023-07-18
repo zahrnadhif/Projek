@@ -5,7 +5,7 @@
     <div class="container-fluid">
         <div class="row my-2 justify-content-center">
             <div class="col-8 text-center fs-1 fw-semibold">
-                  data pegawai
+                  Data Reject
             </div>
         </div>
         <div class="row justify-content-center">

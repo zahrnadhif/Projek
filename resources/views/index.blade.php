@@ -1,8 +1,9 @@
 @extends('main')
 @section( 'content')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <div class="main-content">
-    <div class="container-fluid mt-5">
+    <div class="container-fluid mt-3">
         <a href="/tambahData" type="button" class="btn btn-success">Tambah</a>
         <div class="row mt-3">
             @if($message = Session::get('success'))
@@ -13,7 +14,7 @@
                 
             @endif
             <div class="col-md-12">
-                <div class="card border-0 shadow rounded">
+                <div class="card shadow rounded">
                     <div class="card-body">    
                         <table class="table table-bordered">
                             <thead>
@@ -39,44 +40,63 @@
                                 <td>{{ $datas->penyebab }}</td>
                                 <td>{{ $datas->solusi }}</td>
                                 <td>
-                                    <img src="{{ asset('gambarReject/'.$datas->gambar) }}" alt="">
+                                    <img src="{{ asset('gambarReject/'.$datas->gambar) }}" alt="" style="width:100px; ">
                                 </td>
                                 <td class="text-center">
                                     <a href="/tampilkanData/{{$datas->id}}" class="btn btn-primary mx-1">Edit</a>
-                                    <a href="/deleteData/{{$datas->id}}" class="btn btn-danger">Hapus</a>
+                                    <a href="#" class="btn btn-danger" id="delete" data-id={{ $datas->id }} data-nama={{$datas->reject}} >Hapus</a>
                                 </td>
                             </tr>
-                            @endforeach
-                                
-                              {{-- @empty --}}
-                                  <div class="alert alert-danger">
-                                      Data Reject belum Tersedia.
-                                  </div>
-                              {{-- @endforelse --}}
+                            @endforeach                           
                             </tbody>
                           </table>  
-                          {{-- {{ $blogs->links() }} --}}
                     </div>
                 </div>
             </div>
         </div>
     </div>
     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script> --}}
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+          $('#delete').click(function(){
+            var rejectid = $(this).attr('data-id');
+            var rejectnama = $(this).attr('data-nama');
+            swal({
+            title: "Yakin ?",
+            text: "Apakah kamu ingin menghapus data reject "+rejectnama+"",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+            })
+            .then((willDelete) => {
+            if (willDelete) {
+                window.location ="/deleteData/"+rejectid+""
+                swal("Data berhasil di hapus", {
+                icon: "success",
+                });
+            } else {
+                swal("Data tidak jadi di hapus");
+            }
+            });
+          })
+           
+    </script>
     <script>
         //message with toastr
-        @if(session()->has('success'))
+        // @if(session()->has('success'))
         
-            toastr.success('{{ session('success') }}', 'BERHASIL!'); 
+        //     toastr.success('{{ session('success') }}', 'BERHASIL!'); 
 
-        @elseif(session()->has('error'))
+        // @elseif(session()->has('error'))
 
-            toastr.error('{{ session('error') }}', 'GAGAL!'); 
+        //     toastr.error('{{ session('error') }}', 'GAGAL!'); 
             
-        @endif
+        // @endif
+        toastr.success('Have fun storming the castle!', 'Miracle Max Says')
     </script>
 </div>
 @endsection
