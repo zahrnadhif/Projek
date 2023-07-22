@@ -1,75 +1,86 @@
-<div id="layoutSidenav_nav">
-    <nav class="sb-sidenav accordion sb-sidenav-light text-dark" id="sidenavAccordion">
-        <div class="sb-sidenav-menu">
-            <div class="nav">
-                <div class="sb-sidenav-menu-heading"></div>
-                <a class="nav-link" href="{{ url('/dashboard') }}">
-                    <div class="sb-nav-link-icon"><i class="fa-solid fa-house-laptop fa-lg"></i></div>
-                    Dashboard
-                </a>
-                <hr class="sidebar-divider my-1">
+<!-- Main Sidebar Container -->
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="index3.html" class="brand-link">
+      <img src="dist/img/logo.png" alt="BBB Logo" class="brand-image img-square elevation-10" style="opacity: .8">
+      <span class="brand-text font-weight-light">E-Arsip BBB</span>
+    </a>
 
-                <a class="nav-link collapsed" href="/" data-bs-toggle="collapse" data-bs-target="#collapseProduction" aria-expanded="false" aria-controls="collapseProduction">
-                    <div class="sb-nav-link-icon"><i class="fa-solid fa-gears fa-lg" href="/prod"></i></div>
-                    Production
-                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                </a>
-                <div class="collapse" id="collapseProduction" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                    <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link ms-3" href="{{ url('/prod/melting') }}">Melting</a>
-                        <a class="nav-link ms-3" href="{{ url('/prod/casting') }}">Casting</a>
-                        <a class="nav-link ms-3" href="">Machining</a>
-                        <a class="nav-link ms-3" href="">Painting</a>
-                        <a class="nav-link ms-3" href="">Assembling</a>
-                        <a class="nav-link ms-3" href="">Final Inspection</a>
-                        <a class="nav-link ms-3" href="{{ url('/prod/shipping') }}">Shipping</a>
-                        <a class="nav-link ms-3" href="{{ url('/prod/warehouse') }}">Warehouse</a>
-                        <a class="nav-link ms-3" href="{{ url('/prod/quality') }}">Quality</a>
-                    </nav>
-                </div>
-                <hr class="sidebar-divider my-1">
-                <a class="nav-link" href="{{ url('/adm/mp') }}">
-                    <div class="sb-nav-link-icon"><i class="fa-solid fa-people-group fa-lg"></i></div>
-                    Man Power
-                </a>
-
-                <hr class="sidebar-divider my-1">
-                <a class="nav-link collapsed" href="/" data-bs-toggle="collapse" data-bs-target="#collapseAsakai" aria-expanded="false" aria-controls="collapseAsakai">
-                    <div class="sb-nav-link-icon"><i class="fa-solid fa-person-chalkboard"></i></div>
-                    Asakai Point
-                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                </a>
-                <div class="collapse" id="collapseAsakai" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                    <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link ms-3" href="{{ url('/calenderEvent') }}"> Calender Of Event</a>
-                        <a class="nav-link ms-3" href="{{ url('/BadNewsFirst') }}"> Bad News First</a>
-                    </nav>
-                </div>
-
-                <hr class="sidebar-divider my-1">
-                <a class="nav-link collapsed" href="/" data-bs-toggle="collapse" data-bs-target="#collapseFG" aria-expanded="false" aria-controls="collapseFG">
-                    <div class="sb-nav-link-icon"><i class="fa-solid fa-truck-fast fa-lg"></i></div>
-                    Create QR
-                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                </a>
-                <div class="collapse" id="collapseFG" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                    <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link ms-3" href="{{ url('/qr/finishgood') }}">Finish Good</a>
-                        <a class="nav-link ms-3" href="{{ url('/qr/fromsubcont') }}">From Subcont</a>
-                    </nav>
-                </div>
-                <hr class="sidebar-divider my-1">
-                <a class="nav-link" href="{{ url('/sto') }}">
-                    <div class="sb-nav-link-icon"><i class="fa-solid fa-list-check fa-lg"></i></div>
-                    Stock Opname
-                </a>
-            </div>
+    <!-- Sidebar -->
+    
+      <!-- SidebarSearch Form -->
+      <div class="form-inline">
+        <div class="input-group" data-widget="sidebar-search">
+          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+          <div class="input-group-append">
+            <button class="btn btn-sidebar">
+              <i class="fas fa-search fa-fw"></i>
+            </button>
+          </div>
         </div>
-        <div class="sb-sidenav-footer">
-            <div class="small ">Welcome, </div>
-            <span class="fw-bold">User</span>
-            {{-- <span class="fw-bold">{{ Auth::User()->name }} </span> --}}
-            <a class="float-end text-danger" href=""> <i class="fa-solid fa-right-from-bracket fa-lg "></i></a>
-        </div>
-    </nav>
-</div>
+      </div>
+      <!-- home-->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <li class="nav-item menu-close">
+              <a href="#" class="nav-link deactive">
+                <p>  
+                  Home 
+                </p>
+              </a>
+            </li>
+        </ul>
+      </nav>
+      <!-- Profil Perusahaan -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <li class="nav-item menu-close">
+              <a href="#" class="nav-link deactive">
+                <p>
+                  Profil Perusahaan
+                </p>
+              </a>
+            </li>
+        </ul>
+      </nav>
+      <!-- Sidebar Menu -->
+
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item menu-open">
+            <a href="#" class="nav-link active">
+              <p>
+                Dokumen
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="./index.html" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Data Kendaraan</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="./index2.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Penjualanan</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="./index3.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>BPKB</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>

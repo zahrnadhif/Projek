@@ -54,4 +54,8 @@ class RejectController extends Controller
         
         return redirect()->route('index')->with('success','Data Berhasil Di Hapus');
     }
+
+    public function konsultasi(){
+    return view ('konsultasi');
+    }
 }

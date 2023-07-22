@@ -30,6 +30,8 @@ Route::post('/updateData/{id}', [RejectController::class, 'updateData']);
 //delete data
 Route::get('/deleteData/{id}', [RejectController::class, 'deleteData']);
 
+Route::get('/konsultasi', [RejectController::class, 'konsultasi']);
+
 // Route::get('/tablet', function(){
 //     return view('tablet.tablet');
 // });

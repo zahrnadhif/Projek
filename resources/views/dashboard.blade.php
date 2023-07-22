@@ -118,38 +118,44 @@ series.columns.template.adapters.add("stroke", function(stroke, target) {
 
 // Set data
 var data = [{
-  country: "USA",
-  value: 2025
+  country: "Kulit Jeruk",
+  value: 30
 }, {
-  country: "China",
-  value: 1882
+  country: "Berkawah",
+  value: 26
 }, {
-  country: "Japan",
-  value: 1809
+  country: "Beruntus",
+  value: 21
 }, {
-  country: "Germany",
-  value: 1322
+  country: "Lecet",
+  value: 17
 }, {
-  country: "UK",
-  value: 1122
+  country: "Peel Off",
+  value: 11
 }, {
-  country: "France",
-  value: 1114
+  country: "Belang",
+  value: 8
 }, {
-  country: "India",
-  value: 984
+  country: "Meler",
+  value: 5
 }, {
-  country: "Spain",
-  value: 711
+  country: "Dust Spray",
+  value: 3
 }, {
-  country: "Netherlands",
-  value: 665
+  country: "Sanding Mark",
+  value: 2
 }, {
-  country: "South Korea",
-  value: 443
+  country: "Poor Gloss",
+  value: 0
 }, {
-  country: "Canada",
-  value: 441
+  country: "Dirty",
+  value: 0
+},{
+  country: "Cipratan Cat",
+  value: 0
+},{
+  country: "Tipis",
+  value: 0
 }];
 
 xAxis.data.setAll(data);
