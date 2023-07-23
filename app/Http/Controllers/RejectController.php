@@ -56,6 +56,14 @@ class RejectController extends Controller
     }
 
     public function konsultasi(){
-    return view ('konsultasi');
+        return view ('konsultasi');
+    }
+
+    public function detail(){
+        return view ('detail');
+    }
+
+    public function aturan(){
+        return view ('aturan');
     }
 }

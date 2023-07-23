@@ -32,6 +32,10 @@ Route::get('/deleteData/{id}', [RejectController::class, 'deleteData']);
 
 Route::get('/konsultasi', [RejectController::class, 'konsultasi']);
 
+Route::get('/detail', [RejectController::class, 'detail']);
+
+Route::get('/aturan', [RejectController::class, 'aturan']);
+
 // Route::get('/tablet', function(){
 //     return view('tablet.tablet');
 // });

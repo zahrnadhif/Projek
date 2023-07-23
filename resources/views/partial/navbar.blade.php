@@ -1,21 +1,24 @@
-<nav class="nav nav-header ">
-    <div class="row w-100">
-      <div class="col-4 mb-2">
-        <div class="d-flex justify-content-start">
-          <img class="logo" src="{{ url('/img/nusametal.png') }}" alt="Image" />
-        </div>
+<nav class="sb-topnav navbar navbar-expand navbar-light" style="background-color: #E9E8E8;">
+  {{-- KIRI --}}
+  <div class="col-4">
+    <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+  <a href="{{ url('/dashboard') }}">
+    <img src="{{ url('/img/nusametal.png') }}"  width="220" height="38">
+  </a>
+  </div>
+  
+  <div class="col-4">
+    SISTEM PAKAR
+  </div>
+  
+  {{-- KANAN --}}
+  <div class="col-4 justify-content-end">
+    <ul class="navbar-nav d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+      <div class="card fs-4 fw-bold p-1 justify-content-end" id="MyClockDisplay" onload="showTime()">
       </div>
-
-      <div class="col-4">
-        <div class="title section text-center fw-bold fs-1"> SISTEM PAKAR REJECT </div>
-      </div>
-
-      <div class="col-4 d-flex justify-content-end">
-        <label id="MyClockDisplay" class="clock shadow" onload="showTime()"></label>
-      </div>
-
-    </div>
-  </nav>
+    </ul>
+  </div>
+</nav>
 
   <script>
     function showTime() {

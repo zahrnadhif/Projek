@@ -24,7 +24,8 @@
             </p>
             
             <div class="go-corner">
-              <div class="go-arrow">→</div>
+              {{-- <div class="go-arrow">→</div> --}}
+              <a href="{{ url('/detail') }}" class="go-arrow">→</a>
             </div>
           </div>
         </div>
