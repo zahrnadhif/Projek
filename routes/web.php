@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GejalaController;
 use App\Http\Controllers\RejectController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,11 +31,20 @@ Route::post('/updateData/{id}', [RejectController::class, 'updateData']);
 //delete data
 Route::get('/deleteData/{id}', [RejectController::class, 'deleteData']);
 
+// form konsultasi
+
+
+// halaman konsultasi user
 Route::get('/konsultasi', [RejectController::class, 'konsultasi']);
 
 Route::get('/detail', [RejectController::class, 'detail']);
 
 Route::get('/aturan', [RejectController::class, 'aturan']);
+
+// Gejala
+Route::get('/gejala/gejala', [GejalaController::class, 'gejala'])->name('gejala');
+//nambah data
+Route::get('/gejala/tambahGejala', [GejalaController::class, 'tambahGejala']);
 
 // Route::get('/tablet', function(){
 //     return view('tablet.tablet');

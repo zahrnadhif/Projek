@@ -5,10 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Reject extends Model
+class Gejala extends Model
 {
     use HasFactory;
-    protected $table = "rejects";
+    protected $table = "gejalas";
     protected $guarded = [];
-
 }

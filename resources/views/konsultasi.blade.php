@@ -15,20 +15,28 @@
                             <div class="col-8"> Pertanyaan </div>
                             <div class="col-3"> Jawab</div>
                         </div>
+
                         <div class="row">
                             <div class="col-1"> 1 </div>
-                            <div class="col-8"> Apakah terdapat sb-sidenav-menu-heading pada part? </div>
-                            <div class="col-3 d-flex flex-wrapper"> 
+                            <div class="col-7"> Apakah permukaan cat terdapat gelombang yang menyerupai kulit jeruk? </div>
+                            <div class="col-4 "> 
                                 <div class="row">
                                     <div class="col-6">
                                         <input type="radio" id="html" name="fav_language" value="HTML">
-                                        <label for="html">HTML</label><br>
+                                        <label for="html">Ya</label>
                                     </div>
                                     <div class="col-6">
                                         <input type="radio" id="html" name="fav_language" value="HTML">
-                                        <label for="html">HTML</label><br>
+                                        <label for="html">tidak</label>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col ">
+                                <a href="/detail" type="button" class="btn btn-success mb-2 justify-content-end">Submit</a>   
+                                {{-- <button type="submit" class="btn btn-primary">Submit</button> --}}
                             </div>
                         </div>
                     </div>

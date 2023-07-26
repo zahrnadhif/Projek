@@ -56,14 +56,31 @@ class RejectController extends Controller
     }
 
     public function konsultasi(){
+
         return view ('konsultasi');
     }
 
     public function detail(){
-        return view ('detail');
+        // $id = 0;
+        // $data = Reject::where('id', $id)->first();
+        // $nama_reject = $rejection->reject;
+        // $penyebab = $rejection->penyebab;
+        // $solusi = $rejection->solusi;
+
+
+        $rejection ="Kulit Jeruk";
+        // $gambar = asset('gambarReject/' .$data->gambar);
+        // $nama_reject = $rejection->reject;
+        // $gambar = $rejection->gambar;
+
+        // $penyebab = $rejection->penyebab;
+        // $solusi = $rejection->solusi;
+         
+        return view ('detail', compact('rejection',));
     }
 
     public function aturan(){
         return view ('aturan');
     }
+    
 }

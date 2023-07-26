@@ -54,7 +54,7 @@
                 </div>
             </div>
         </div>
-        {{-- <div class="row mt-3">
+        <div class="row mt-3">
             @if($message = Session::get('success'))
                 <div class="alert alert-success" role="alert">
                     {{ $message }}
@@ -103,7 +103,7 @@
                     </div>
                 </div>
             </div>
-        </div> --}}
+        </div>
     </div>
     
     {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
