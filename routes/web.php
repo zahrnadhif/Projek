@@ -20,6 +20,8 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', [RejectController::class, 'dashboard']);
+Route::get('/home', [RejectController::class, 'home']);
+
 
 Route::get('/index', [RejectController::class, 'index'])->name('index');
 //nambah data
@@ -31,11 +33,10 @@ Route::post('/updateData/{id}', [RejectController::class, 'updateData']);
 //delete data
 Route::get('/deleteData/{id}', [RejectController::class, 'deleteData']);
 
-// form konsultasi
-
 
 // halaman konsultasi user
 Route::get('/konsultasi', [RejectController::class, 'konsultasi']);
+Route::get('/formKonsultasi', [RejectController::class, 'formKonsultasi']);
 
 Route::get('/detail', [RejectController::class, 'detail']);
 

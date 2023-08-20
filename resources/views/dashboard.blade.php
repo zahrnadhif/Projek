@@ -17,15 +17,32 @@
             {{-- </div> --}}
         </div>
         <div class="row mt-2">
-          <div class="card penjelasan">
-            <p class="card-title mt-2">Kulit Jeruk</p>
-            <p class="small-desc">
-              Permukaan cat yang bergelombang menyerupai kulit jeruk
-            </p>
-            
-            <div class="go-corner">
-              {{-- <div class="go-arrow">→</div> --}}
-              <a href="{{ url('/detail') }}" class="go-arrow">→</a>
+          <div class="card ">
+            <div class="card-header">Data Riwayat Konsultasi</div>
+            <div class="card-body">
+              <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th scope="col">NO</th>
+                      <th scope="col">NRP</th>
+                      <th scope="col">NAMA</th>
+                      <th scope="col">KERUSAKAN</th>
+                      <th scope="col">DETAIL</th>
+                    </tr>
+                  </thead>
+                            
+                  <tr>
+                    <td>1</td>
+                    <td>20032</td>
+                    <td>Zahra Nadhifah</td>
+                    <td>Kulit Jeruk</td>
+                    <td class="text-center">
+                        <a href="#" class="btn btn-primary mx-1">Detail</a>
+                        <a href="#" class="btn btn-danger" id="delete">Hapus</a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>  
             </div>
           </div>
         </div>

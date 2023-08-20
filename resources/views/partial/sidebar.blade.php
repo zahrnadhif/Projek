@@ -26,11 +26,11 @@
                     <input type="text" class="form-control" aria-label="Text input with dropdown button">
                 </div>
 
-                <hr class="sidebar-divider my-1">
+                {{-- <hr class="sidebar-divider my-1">
                 <a class="nav-link" href="{{ url('/konsultasi') }}">
                     <div class="sb-nav-link-icon"><i class="fa-solid fa-people-group fa-lg"></i></div>
                     Konsultasi
-                </a>
+                </a> --}}
 
                 <hr class="sidebar-divider my-1">
                 <a class="nav-link" href="{{ url('/detail') }}">

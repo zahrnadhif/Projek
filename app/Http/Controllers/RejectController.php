@@ -13,6 +13,11 @@ class RejectController extends Controller
         return view('dashboard');
     }
 
+    public function home()
+    {
+        return view('dashboardUser');
+    }
+
     public function index()
     {
         $data = Reject::all();
@@ -58,6 +63,11 @@ class RejectController extends Controller
     public function konsultasi(){
 
         return view ('konsultasi');
+    }
+
+    public function formKonsultasi(){
+
+        return view ('formKonsultasi');
     }
 
     public function detail(){

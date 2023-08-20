@@ -1,108 +1,46 @@
-@extends('main')
+@extends('mainUser')
 @section( 'content')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <div class="main-content">
     <div class="container-fluid mt-3">
-        <div class="row mt-3">
-            @if($message = Session::get('success'))
-                <div class="alert alert-success" role="alert">
-                    {{ $message }}
+        <div class="row justify-content-center">
+          <div class="col-8 justify-content-center">
+            <div class="card">
+              {{-- <div class="card-body"> --}}
+                <div class="row">
+                  <div class="col ">
+                      Konsultasi
+                  </div>
                 </div>
-            @else       
-            @endif
-            <div class="col-md-12">
-                <div class="card shadow rounded">
-                    <div class="card-header"> Data Reject</div>
-                    <div class="card-body"> 
-                        <a href="/tambahData" type="button" class="btn btn-success mb-2">Tambah</a>   
-                        <table class="table table-bordered">
-                            <thead>
-                              <tr>
-                                <th scope="col">Id</th>
-                                <th scope="col">Reject</th>
-                                <th scope="col">Keterangan</th>
-                                <th scope="col">Penyebab</th>
-                                <th scope="col">Solusi</th>
-                                <th scope="col">Gambar</th>
-                                <th scope="col">Aksi</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                                @php
-                                    $no =1;
-                                @endphp
-                            @foreach($data as $datas)
-                            <tr>
-                                <td>{{ $no++ }}</td>
-                                <td>{{ $datas->reject }}</td>
-                                <td>{{ $datas->keterangan }}</td>
-                                <td>{{ $datas->penyebab }}</td>
-                                <td>{{ $datas->solusi }}</td>
-                                <td>
-                                    <img src="{{ asset('gambarReject/'.$datas->gambar) }}" alt="" style="width:100px; ">
-                                </td>
-                                <td class="text-center">
-                                    <a href="/tampilkanData/{{$datas->id}}" class="btn btn-primary mx-1">Edit</a>
-                                    <a href="#" class="btn btn-danger" id="delete" data-id={{ $datas->id }} data-nama={{$datas->reject}} >Hapus</a>
-                                </td>
-                            </tr>
-                            @endforeach                           
-                            </tbody>
-                          </table>  
+                <div class="row">
+                    <div class="col">
+                        <div class="card">
+                            <form action="/lhp-final-inspection/simpan" method="post">
+                                @csrf
+                                  <div class="row mx-2 mt-3">
+                                    <div class="col-12 ">
+                                      <label for="nrp">NRP</label>
+                                      <input class="form-control" type="text" id="nrp" name="nrp" placeholder="Masukan NRP" aria-label="default input example" required>
+                                    </div>
+                                  </div>
+                    
+                                  <div class="row mx-2 mt-3">
+                                    <div class="col-12">
+                                      <label for="nama">Nama</label>
+                                      <input class="form-control" type="text" id="nama" name="nama" placeholder="" aria-label="default input example" required>
+                                    </div>
+                                  </div>
+        
+                                  <a href="/konsultasi" class="btn btn-success">Simpan</a>   
+        
+                            </form>
+                        </div>
                     </div>
                 </div>
+                {{-- </div> --}}
             </div>
-        </div>
-        <div class="row mt-3">
-            @if($message = Session::get('success'))
-                <div class="alert alert-success" role="alert">
-                    {{ $message }}
-                </div>
-            @else       
-            @endif
-            <div class="col-md-12">
-                <div class="card shadow rounded">
-                    <div class="card-header"> Data Reject</div>
-                    <div class="card-body"> 
-                        <a href="/tambahData" type="button" class="btn btn-success mb-2">Tambah</a>   
-                        <table class="table table-bordered">
-                            <thead>
-                              <tr>
-                                <th scope="col">Id</th>
-                                <th scope="col">Reject</th>
-                                <th scope="col">Keterangan</th>
-                                <th scope="col">Penyebab</th>
-                                <th scope="col">Solusi</th>
-                                <th scope="col">Gambar</th>
-                                <th scope="col">Aksi</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                                @php
-                                    $no =1;
-                                @endphp
-                            @foreach($data as $datas)
-                            <tr>
-                                <td>{{ $no++ }}</td>
-                                <td>{{ $datas->reject }}</td>
-                                <td>{{ $datas->keterangan }}</td>
-                                <td>{{ $datas->penyebab }}</td>
-                                <td>{{ $datas->solusi }}</td>
-                                <td>
-                                    <img src="{{ asset('gambarReject/'.$datas->gambar) }}" alt="" style="width:100px; ">
-                                </td>
-                                <td class="text-center">
-                                    <a href="/tampilkanData/{{$datas->id}}" class="btn btn-primary mx-1">Edit</a>
-                                    <a href="#" class="btn btn-danger" id="delete" data-id={{ $datas->id }} data-nama={{$datas->reject}} >Hapus</a>
-                                </td>
-                            </tr>
-                            @endforeach                           
-                            </tbody>
-                          </table>  
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
     </div>
     
