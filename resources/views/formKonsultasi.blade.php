@@ -4,38 +4,37 @@
 
 <div class="main-content">
     <div class="container-fluid mt-3">
-        <div class="row justify-content-center">
-          <div class="col-8 justify-content-center">
+        <div class="row justify-content-center align-self-center ">
+          <div class="col-7 align-self-center">
             <div class="card">
               {{-- <div class="card-body"> --}}
-                <div class="row">
-                  <div class="col ">
-                      Konsultasi
-                  </div>
-                </div>
+                <div class="text-center fs-1 fw-semibold mt-2">Konsultasi</div>
                 <div class="row">
                     <div class="col">
-                        <div class="card">
-                            <form action="/lhp-final-inspection/simpan" method="post">
+                        {{-- <div class="card"> --}}
+                            <form action="/konsultasi" method="post">
                                 @csrf
-                                  <div class="row mx-2 mt-3">
-                                    <div class="col-12 ">
+                                  <div class="row mx-2 mt-3 fs-2 justify-content-center">
+                                    <div class="col-6">
                                       <label for="nrp">NRP</label>
                                       <input class="form-control" type="text" id="nrp" name="nrp" placeholder="Masukan NRP" aria-label="default input example" required>
                                     </div>
                                   </div>
                     
-                                  <div class="row mx-2 mt-3">
-                                    <div class="col-12">
+                                  <div class="row mx-2 mt-3 fs-2 justify-content-center">
+                                    <div class="col-6">
                                       <label for="nama">Nama</label>
-                                      <input class="form-control" type="text" id="nama" name="nama" placeholder="" aria-label="default input example" required>
+                                      <input class="form-control" type="text" id="nama" name="nama" placeholder="Masukkan Nama" aria-label="default input example" required>
                                     </div>
                                   </div>
-        
-                                  <a href="/konsultasi" class="btn btn-success">Simpan</a>   
-        
+                                  
+                                  <div class="row mx-2 my-3 justify-content-center text-center">
+                                    <div class="col-1 fs-3 bg-success border  rounded" style="">
+                                      <a href="/konsultasi" class="" style="color:white">Simpan</a>   
+                                    </div>
+                                  </div>
                             </form>
-                        </div>
+                        {{-- </div> --}}
                     </div>
                 </div>
                 {{-- </div> --}}

@@ -7,9 +7,9 @@
     <title>Sistem Pakar</title>
     {{-- <link rel="stylesheet" type="text/css" href="{{ asset('/css/performa_melting.css') }}"> --}}
     <link rel="stylesheet" type="text/css"href="{{ asset('/css/bootstrap-5.2.2-dist/bootstrap-5.2.2-dist/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('/css/login.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('/css/styles.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('/css/sb-admin-2.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/home.css') }}">
+    {{-- <link rel="stylesheet" type="text/css" href="{{ asset('/css/styles.css') }}"> --}}
+    {{-- <link rel="stylesheet" type="text/css" href="{{ asset('/css/sb-admin-2.min.css') }}"> --}}
     <link rel="stylesheet" type="text/css" href="{{ asset('fontawesome-free-6.4.0-web/css/all.min.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/select2.min.css') }}" />
 

@@ -15,12 +15,12 @@
                     <form action="/insertGejala" method="POST" enctype="multipart/form-data">
                         @csrf 
                         <div class="mb-3">
-                          <label for="jenisreject" class="form-label">Kode</label>
-                          <input type="text" name="reject"class="form-control" id="jnsreject">
+                          <label for="kode" class="form-label">Kode</label>
+                          <input type="text" name="kode"class="form-control" id="kode">
                         </div>
                         <div class="mb-3">
-                            <label for="keterangan" class="form-label">Gejala</label>
-                            <input type="text" name="keterangan" class="form-control" id="keterangan">
+                            <label for="nama_gejala" class="form-label">Gejala</label>
+                            <input type="text" name="nama_gejala" class="form-control" id="nama_gejala">
                         </div>
 
                         <button type="submit" class="btn btn-primary">Submit</button>

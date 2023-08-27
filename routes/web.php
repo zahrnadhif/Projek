@@ -43,9 +43,10 @@ Route::get('/detail', [RejectController::class, 'detail']);
 Route::get('/aturan', [RejectController::class, 'aturan']);
 
 // Gejala
-Route::get('/gejala/gejala', [GejalaController::class, 'gejala'])->name('gejala');
+Route::get('/gejala', [GejalaController::class, 'gejala'])->name('gejala');
 //nambah data
-Route::get('/gejala/tambahGejala', [GejalaController::class, 'tambahGejala']);
+Route::get('/tambahGejala', [GejalaController::class, 'tambahGejala']);
+Route::post('/insertGejala', [GejalaController::class, 'insertGejala']);
 
 // Route::get('/tablet', function(){
 //     return view('tablet.tablet');

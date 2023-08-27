@@ -16,7 +16,7 @@
                 <div class="card shadow rounded">
                     <div class="card-header"> Data Gejala/Kriteria</div>
                     <div class="card-body"> 
-                        <a href="/gejala/tambahGejala" type="button" class="btn btn-success mb-2">Tambah</a>   
+                        <a href="/tambahGejala" type="button" class="btn btn-success mb-2">Tambah</a>   
                         <table class="table table-bordered">
                             <thead>
                               <tr>
@@ -24,20 +24,19 @@
                                 <th scope="col">Kode</th>
                                 <th scope="col">Nama Gejala</th>
                                 <th scope="col">Aksi</th>
-                              </tr>
                             </thead>
                             <tbody>
                                 @php
                                     $no =1;
                                 @endphp
-                            @foreach($datagejala as $dtgejala)
+                            @foreach($datagejala as $dtgejalas)
                             <tr>
                                 <td>{{ $no++ }}</td>
-                                <td>{{ $dtgejala->kode }}</td>
-                                <td>{{ $dtgejala->nama_gejala }}</td>
+                                <td> {{ $dtgejalas->kode }}</td>
+                                <td> {{ $dtgejalas->nama_gejala }}</td>
                                 <td class="text-center">
-                                    <a href="/tampilGejala/{{$dtgejala->id}}" class="btn btn-primary mx-1">Edit</a>
-                                    <a href="#" class="btn btn-danger" id="delete" data-id={{ $dtgejala->id }} data-nama={{$dtgejala->nama_gejala}} >Hapus</a>
+                                    <a href="/tampilGejala/{{$dtgejalas->id}}" class="btn btn-primary mx-1">Edit</a>
+                                    <a href="#" class="btn btn-danger" id="delete" data-id={{ $dtgejalas->id }} data-nama={{$dtgejalas->kode}} >Hapus</a>
                                 </td>
                             </tr>
                             @endforeach                           
@@ -60,7 +59,7 @@
             var gejalaket = $(this).attr('data-nama');
             swal({
             title: "Yakin ?",
-            text: "Apakah kamu ingin menghapus data reject "+gejalanama+"",
+            text: "Apakah kamu ingin menghapus data gejala "+gejalanama+"",
             icon: "warning",
             buttons: true,
             dangerMode: true,

@@ -7,16 +7,16 @@
   </a>
   </div>
   
-  <div class="col-4">
+  <div class="col-4 text-center fs-2 fw-semibold" style="color:black">
     SISTEM PAKAR
   </div>
   
   {{-- KANAN --}}
-  <div class="col-4 justify-content-end">
-    <ul class="navbar-nav d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-      <div class="card fs-4 fw-bold p-1 justify-content-end" id="MyClockDisplay" onload="showTime()">
+  <div class="col-4 text-sm-center">
+    {{-- <ul class="navbar-nav "> --}}
+      <div class=" fs-3 fw-bold" id="MyClockDisplay" onload="showTime()">
       </div>
-    </ul>
+    {{-- </ul> --}}
   </div>
 </nav>
 

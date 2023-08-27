@@ -7,35 +7,35 @@
                     <div class="sb-nav-link-icon"><i class="fa-solid fa-house-laptop fa-lg"></i></div>
                     Dashboard
                 </a>
+
                 <hr class="sidebar-divider my-1">
-                {{-- <div class="sb-sidenav-menu-heading"></div> --}}
-                <a class="nav-link collapsed" href="{{ url('/index') }}" data-bs-toggle="collapse" data-bs-target="#collapseProduction" aria-expanded="false" aria-controls="collapseProduction">
-                    <div class="sb-nav-link-icon"><i class="fa-solid fa-gears fa-lg" href="/prod"></i></div>
+                <a class="nav-link" href="{{ url('/index') }}">
+                    <div class="sb-nav-link-icon"><i class="fa-solid fa-house-laptop fa-lg"></i></div>
                     Data Reject
-                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                 </a>
-                <div class="collapse" id="collapseProduction" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">Action</a></li>
-                      <li><a class="dropdown-item" href="#">Another action</a></li>
-                      <li><a class="dropdown-item" href="#">Something else here</a></li>
-                      <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="#">Separated link</a></li>
-                    </ul>
-                    <input type="text" class="form-control" aria-label="Text input with dropdown button">
-                </div>
+
+                <hr class="sidebar-divider my-1">
+                <a class="nav-link" href="{{ url('/gejala/gejala') }}">
+                    <div class="sb-nav-link-icon"><i class="fa-solid fa-house-laptop fa-lg"></i></div>
+                    Data Gejala
+                </a>
+
+                <hr class="sidebar-divider my-1">
+                <a class="nav-link" href="{{ url('/aturan') }}">
+                    <div class="sb-nav-link-icon"><i class="fa-solid fa-people-group fa-lg"></i></div>
+                    Relasi Kerusakan
+                </a>
 
                 {{-- <hr class="sidebar-divider my-1">
-                <a class="nav-link" href="{{ url('/konsultasi') }}">
-                    <div class="sb-nav-link-icon"><i class="fa-solid fa-people-group fa-lg"></i></div>
-                    Konsultasi
-                </a> --}}
-
-                <hr class="sidebar-divider my-1">
                 <a class="nav-link" href="{{ url('/detail') }}">
                     <div class="sb-nav-link-icon"><i class="fa-solid fa-people-group fa-lg"></i></div>
                     Detail
+                </a> --}}
+
+                <hr class="sidebar-divider my-1">
+                <a class="nav-link" href="{{ url('/home') }}">
+                    <div class="sb-nav-link-icon"><i class="fa-solid fa-people-group fa-lg"></i></div>
+                    Logout
                 </a>
 
             </div>
