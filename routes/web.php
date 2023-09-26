@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\GejalaController;
 use App\Http\Controllers\RejectController;
+use App\Http\Controllers\ApiController;
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('dashboardUser');
 });
 
 Route::get('/dashboard', [RejectController::class, 'dashboard']);
@@ -33,14 +35,16 @@ Route::post('/updateData/{id}', [RejectController::class, 'updateData']);
 //delete data
 Route::get('/deleteData/{id}', [RejectController::class, 'deleteData']);
 
+Route::get('/aturan', [RejectController::class, 'aturan']);
+Route::get('/partial/modal/relasi/{reject}', [RejectController::class, 'modalEditRelasi'])->name('relasi');
+Route::POST('/update/relasi/{reject}', [RejectController::class, 'updateRelasi']);
 
 // halaman konsultasi user
-Route::get('/konsultasi', [RejectController::class, 'konsultasi']);
+Route::get('/konsultasi/{id}', [RejectController::class, 'konsultasi1']);
 Route::get('/formKonsultasi', [RejectController::class, 'formKonsultasi']);
-
 Route::get('/detail', [RejectController::class, 'detail']);
+Route::post('/submitKonsultasi/{id}/{urutan}', [RejectController::class, 'submitKonsultasi1']);
 
-Route::get('/aturan', [RejectController::class, 'aturan']);
 
 // Gejala
 Route::get('/gejala', [GejalaController::class, 'gejala'])->name('gejala');
@@ -56,6 +60,13 @@ Route::post('/insertGejala', [GejalaController::class, 'insertGejala']);
 //     return view('home');
 // });
 
-Route::get('/login', function(){
+Route::get('/login', function () {
     return view('login');
 });
+
+//Api
+Route::get('/dtkyrw/{nrp}', [ApiController::class, 'dtkyrw']);
+
+//Auth
+//Login User
+Route::post('/login/user', [AuthController::class, 'LoginUser']);
