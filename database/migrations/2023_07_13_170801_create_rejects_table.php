@@ -13,13 +13,10 @@ class CreateRejectsTable extends Migration
      */
     public function up()
     {
-        Schema::create('rejects', function (Blueprint $table) {
-            $table->id();
-            $table->string('reject');
-            $table->string('keterangan');
-            $table->string('penyebab');
-            $table->string('solusi');
-            $table->string('gambar');
+        Schema::create('db_reject', function (Blueprint $table) {
+            $table->string('id_reject')->primary();
+            $table->string('nama');
+            $table->string('gambar')->nullable();
             $table->timestamps();
         });
     }
@@ -31,6 +28,6 @@ class CreateRejectsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rejects');
+        Schema::dropIfExists('db_reject');
     }
 }
