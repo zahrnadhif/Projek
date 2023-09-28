@@ -16,6 +16,7 @@ class GejalaMigration extends Migration
         Schema::create('db_gejala', function (Blueprint $table) {
             $table->string('id_gejala')->primary();
             $table->string('nama');
+            $table->string('gambar')->nullable();
             $table->string('kode_solusi');
             $table->foreign('kode_solusi')->references('id_solusi')->on('db_solusi')->onDelete('cascade');
             $table->timestamps();

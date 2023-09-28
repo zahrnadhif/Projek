@@ -2,8 +2,8 @@
 @section('content')
     <style>
         /* ==========================================================================
-                                           Hero Area
-                                           ========================================================================== */
+                                                   Hero Area
+                                                   ========================================================================== */
         .hero-area {
             position: relative;
         }
@@ -151,7 +151,7 @@
     <div class="modal fade" id="konsultasi" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-md ">
-            <form action="/login/user" method="POST" onSubmit="document.getElementById('submit').disabled=true;">
+            <form action="/buat/form" method="POST" onSubmit="document.getElementById('submit').disabled=true;">
                 @csrf
                 <div class="modal-content">
                     <div class="modal-header">
@@ -169,13 +169,13 @@
                             <div class="col-12 mb-3">
                                 <label for="nama" class="form-label">NAMA</label>
                                 <input type="text" class="form-control border-primary" id="nama" name="nama"
-                                    aria-describedby="emailHelp" required>
+                                    aria-describedby="emailHelp" required readonly>
                             </div>
-                            <div class="col-12 mb-3">
+                            {{-- <div class="col-12 mb-3">
                                 <label for="nama" class="form-label">PASSWORD</label>
                                 <input type="password" class="form-control border-primary" id="password" name="password"
                                     aria-describedby="emailHelp" required>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                     <div class="modal-footer">

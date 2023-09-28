@@ -40,11 +40,12 @@ Route::get('/partial/modal/relasi/{reject}', [RejectController::class, 'modalEdi
 Route::POST('/update/relasi/{reject}', [RejectController::class, 'updateRelasi']);
 
 // halaman konsultasi user
-Route::get('/konsultasi/{id}', [RejectController::class, 'konsultasi1']);
+Route::post('/buat/form', [RejectController::class, 'buatKonsultasi']);
+Route::get('/konsultasi/{id}', [RejectController::class, 'konsultasi1'])->name('konsultasi1');
 Route::get('/formKonsultasi', [RejectController::class, 'formKonsultasi']);
 Route::get('/detail', [RejectController::class, 'detail']);
 Route::post('/submitKonsultasi/{id}/{urutan}', [RejectController::class, 'submitKonsultasi1']);
-
+Route::get('/hasil/{id}/{reject}', [RejectController::class, 'hasilKonsultasi'])->name('hasilKonsultasi');
 
 // Gejala
 Route::get('/gejala', [GejalaController::class, 'gejala'])->name('gejala');
