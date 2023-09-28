@@ -18,6 +18,8 @@ class KonsultasiGejala extends Migration
             // $table->string('nama');
             $table->string('kode_gejala')->nullable();
             $table->foreign('kode_gejala')->references('id_gejala')->on('db_gejala')->onDelete('cascade');
+            $table->unsignedBigInteger('kode_konsultasi');
+            $table->foreign('kode_konsultasi')->references('id')->on('db_konsultasi')->onDelete('cascade');
             $table->timestamps();
         });
     }

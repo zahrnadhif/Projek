@@ -17,7 +17,7 @@ class Konsultasi extends Migration
             $table->id();
             $table->unsignedBigInteger('nrp');
             $table->foreign('nrp')->references('nrp')->on('users')->onDelete('cascade');
-            // $table->string('nama');
+            $table->string('shift');
             $table->string('kode_reject')->nullable();
             $table->foreign('kode_reject')->references('id_reject')->on('db_reject')->onDelete('cascade');
             $table->timestamps();

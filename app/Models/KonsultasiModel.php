@@ -9,4 +9,5 @@ class KonsultasiModel extends Model
 {
     use HasFactory;
     protected $table = 'db_konsultasi';
+    protected $guarded = [];    
 }

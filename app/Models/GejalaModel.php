@@ -19,4 +19,3 @@ class GejalaModel extends Model
         return $this->belongsTo(SolusiModel::class, 'kode_solusi', 'id_solusi');
     }
 }
-

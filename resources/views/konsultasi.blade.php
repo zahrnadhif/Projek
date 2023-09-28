@@ -25,7 +25,20 @@
                                                     value=" {{ $bukanGejala[$i] }}" hidden>
                                             @endfor
                                         @endif
-
+                                        @if ($benarGejala == null)
+                                        @else
+                                            @for ($i = 0; $i < count($benarGejala); $i++)
+                                                <input type="text" name="benarGejala[]" id=""
+                                                    value=" {{ $benarGejala[$i] }}" hidden>
+                                            @endfor
+                                        @endif
+                                        @if ($bukanReject == null)
+                                        @else
+                                            @for ($i = 0; $i < count($bukanReject); $i++)
+                                                <input type="text" name="bukanReject[]" id=""
+                                                    value=" {{ $bukanReject[$i] }}" hidden>
+                                            @endfor
+                                        @endif
                                         <div class="row mt-3">
                                             <div class="col">
                                                 <img src="{{ asset('gambarReject/1KJ.jpeg') }}" alt=""
