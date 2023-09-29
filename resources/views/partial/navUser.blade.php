@@ -20,8 +20,11 @@
             <a class="dropdown-item" href="#">Data Alternatif Reject</a>
           </div>
         </li> --}}
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link  ms-2" href="{{ url('/formKonsultasi') }}">Konsultasi</a>
+            </li> --}}
+            <li class="nav-item">
+                <a class="nav-link  ms-2" href="{{ url('/login') }}">Login</a>
             </li>
         </ul>
 
