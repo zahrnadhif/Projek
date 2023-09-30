@@ -9,5 +9,9 @@ class KonsultasiModel extends Model
 {
     use HasFactory;
     protected $table = 'db_konsultasi';
-    protected $guarded = [];    
+    protected $guarded = [];
+    public function users()
+    {
+        return $this->belongsTo(user::class, 'nrp', 'nrp');
+    }
 }

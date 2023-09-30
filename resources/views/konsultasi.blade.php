@@ -13,7 +13,8 @@
                                     <div class="card-body">
                                         <div class="row mt-2">
                                             <div class="col">
-                                                <div class="fs-3 fw-semibold"> {{ $gejalaPertama->nama }} </div>
+                                                <div class="fs-3 fw-semibold">{{ $gejalaPertama->id_gejala }} |
+                                                    {{ $gejalaPertama->nama }} </div>
                                             </div>
                                         </div>
                                         <input type="text" name="gejala" id=""
