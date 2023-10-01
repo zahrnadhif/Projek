@@ -14,7 +14,7 @@ class GejalaController extends Controller
     //
     public function gejala()
     {
-        $datagejala = GejalaModel::all();
+        $datagejala = GejalaModel::orderBy('created_at')->get();
         $dataSolusi = SolusiModel::all();
         return view('gejala', compact('datagejala', 'dataSolusi'));
     }
@@ -27,6 +27,20 @@ class GejalaController extends Controller
 
     public function insertGejala(Request $request)
     {
+        // dd($request->gambar->getClientOriginalExtension());
+        //Validasi Gambar
+        // $request->validate([
+        //     'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust validation rules as needed
+        // ]);
+        // dd($request);
+        //Custom nama gambar
+        $filename = 'image_' .  $request->id_gejala . '.' . $request->gambar->getClientOriginalExtension();
+
+        // dd($filename);
+
+        // Store the uploaded image in the public/images directory
+        $request->gambar->move(public_path('imageGejala'), $filename);
+
         //  Cek Solusi baru ada atau tidak  
         $cekSolusi = $request->keterangan_solusi_baru;
         // dd($cekSolusi);
@@ -49,6 +63,7 @@ class GejalaController extends Controller
                 'id_gejala' => $request->id_gejala,
                 'nama' => $request->keterangan,
                 'kode_solusi' => $newId,
+                'gambar' => $filename
             ]);
         } else {
             // dd('2');
@@ -57,6 +72,7 @@ class GejalaController extends Controller
                 'id_gejala' => $request->id_gejala,
                 'nama' => $request->keterangan,
                 'kode_solusi' => $request->solusi,
+                'gambar' => $filename
             ]);
         }
 

@@ -20,7 +20,7 @@
                                     <table class="table table-bordered">
                                         <tr>
                                             <td class="fw-bold text-start">Nama Pengguna</td>
-                                            <td class="text-start"></td>
+                                            <td class="text-start">{{ $id->nrp }} | {{ $id->users->name }}</td>
                                         </tr>
                                         {{-- <tr>
                                             <td class="fw-bold text-start">No. HP</td>

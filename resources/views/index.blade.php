@@ -137,8 +137,8 @@
                                         <td class="text-center">
                                         </td>
                                         <td class="text-center">
-                                            <a href="/tampilkanData/{{ $reject->id }}"
-                                                class="btn btn-primary mx-1">Edit</a>
+                                            <button type="button" class="btn btn-primary mx-1"
+                                                onclick="editReject('{{ $reject->id_reject }}')">Edit</button>
                                             <a href="delete/{{ $reject->id }}" class="btn btn-danger"
                                                 id="delete">Hapus</a>
                                         </td>
@@ -190,11 +190,45 @@
             </form>
         </div>
     </div>
+
+    {{-- Modal Edit --}}
+    <div class="modal fade" id="modalEditReject" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg ">
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fs-5" id="modalEditRejectLabel">Tambah Data</h5>
+                    <button type="button" class="btn-danger rounded btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        onclick="closeModal()"></button>
+                </div>
+                <div class="modal-body" id="tesrt">
+
+                </div>
+                <div class="modal-footer">
+
+                </div>
+            </div>
+
+        </div>
+    </div>
     <script>
         let idReject = document.getElementById('id_reject');
 
         let number = {{ $data->count() }};
         document.getElementById('id_reject').value = 'R' + (number + 1);
         // console.log(number);
+
+        function editReject(reject) {
+            $.get(
+                "/partial/modal/reject" + "/" + reject, {},
+                function(data) {
+                    $("#modalEditRejectLabel").html("Edit Jenis Reject " + reject); //Untuk kasih judul di modal
+                    $("#modalEditReject").modal("show"); //kalo ID pake "#" kalo class pake "."
+                    $('#modalEditReject .modal-body').load("/partial/modal/reject" + "/" + reject);
+                }
+            );
+            console.log('aneh')
+        }
     </script>
 @endsection
