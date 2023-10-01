@@ -24,8 +24,11 @@ Route::get('/', function () {
 Route::get('/dashboard', [RejectController::class, 'dashboard']);
 Route::get('/home', [RejectController::class, 'home']);
 
-
+//REJECT
 Route::get('/index', [RejectController::class, 'index'])->name('index');
+Route::get('/partial/modal/reject/{reject}', [RejectController::class, 'modalEditReject']);
+
+
 //nambah data
 Route::get('/tambahData', [RejectController::class, 'tambahData']);
 Route::post('/insertData', [RejectController::class, 'insertData']);

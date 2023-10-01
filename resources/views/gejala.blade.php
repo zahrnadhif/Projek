@@ -146,7 +146,8 @@
     <div class="modal fade" id="tambah" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-md ">
-            <form action="/insertGejala" method="POST" onSubmit="document.getElementById('submit').disabled=true;">
+            <form action="/insertGejala" method="POST" onSubmit="document.getElementById('submit').disabled=true;"
+                enctype="multipart/form-data">
                 @csrf
                 <div class="modal-content">
                     <div class="modal-header">
@@ -164,6 +165,10 @@
                             <div class="col-12 mb-3">
                                 <span class="mb-3">Keterangan</span>
                                 <textarea class="form-control" aria-label="With textarea" name="keterangan"></textarea>
+                            </div>
+                            <div class="col-12 mb-3">
+                                <label for="gambar" class="form-label">Upload Gambar</label>
+                                <input type="file" class="form-control" id="gambar" name="gambar">
                             </div>
                             <div class="col-12 mb-3">
                                 {{-- <label for="id_gejala" class="form-label">ID Gejala</label> --}}
