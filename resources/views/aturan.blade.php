@@ -51,52 +51,55 @@
         </div>
     @else
     @endif
-    <div class="col-md-12">
-        <div class="card shadow rounded">
-            <div class="card-header"> Relasi Gejala dan Kerusakan</div>
-            <div class="card-body">
-                {{-- <a href="/tambahGejala" type="button" class="btn btn-success mb-2" data-bs-toggle="modal" data-bs-target="#tambah">Tambah</a>    --}}
-                <div class="table-responsive">
-                    <table class="table table-bordered">
-                        <thead>
-                            <th scope="col">No</th>
-                            <th scope="col">Alternatif</th>
-                            <th scope="col">Aksi</th>
-                            @foreach ($dataGejala as $gejala)
-                                <th scope="col">{{ $gejala->id_gejala }}</th>
-                            @endforeach
-                        </thead>
-                        <tbody>
-                            @php
-                                $no = 1;
-                            @endphp
-                            @foreach ($dataReject as $reject)
-                                <tr>
-                                    <td>{{ $no++ }}</td>
-                                    <td>{{ $reject->nama }}</td>
-                                    <td> <button class="btn btn-info" type="button"
-                                            onclick="updateRelasi('{{ $reject->id_reject }}')">Update</button></td>
+
+    <div class="container-fluid mt-3">
+        <div class="row mt-3">
+            <div class="col-md-12">
+                <div class="card shadow rounded">
+                    <div class="card-header"> Relasi Gejala dan Kerusakan</div>
+                    <div class="card-body">
+                        {{-- <a href="/tambahGejala" type="button" class="btn btn-success mb-2" data-bs-toggle="modal" data-bs-target="#tambah">Tambah</a>    --}}
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <th scope="col">No</th>
+                                    <th scope="col">Alternatif</th>
+                                    <th scope="col">Aksi</th>
                                     @foreach ($dataGejala as $gejala)
-                                        @php
-                                            $dataRelasi = $relasi
-                                                ->where('kode_reject', $reject->id_reject)
-                                                ->where('kode_gejala', $gejala->id_gejala)
-                                                ->first();
-                                        @endphp
-                                        @if ($dataRelasi->keterangan == 0)
-                                            <td scope="col">-</td>
-                                        @else
-                                            <td scope="col">Ya</td>
-                                        @endif
+                                        <th scope="col">{{ $gejala->id_gejala }}</th>
                                     @endforeach
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                                </thead>
+                                <tbody>
+                                    @php
+                                        $no = 1;
+                                    @endphp
+                                    @foreach ($dataReject as $reject)
+                                        <tr>
+                                            <td>{{ $no++ }}</td>
+                                            <td>{{ $reject->nama }}</td>
+                                            <td> <button class="btn btn-info" type="button"
+                                                    onclick="updateRelasi('{{ $reject->id_reject }}')">Update</button></td>
+                                            @foreach ($dataGejala as $gejala)
+                                                @php
+                                                    $dataRelasi = $relasi
+                                                        ->where('kode_reject', $reject->id_reject)
+                                                        ->where('kode_gejala', $gejala->id_gejala)
+                                                        ->first();
+                                                @endphp
+                                                @if ($dataRelasi->keterangan == 0)
+                                                    <td scope="col">-</td>
+                                                @else
+                                                    <td scope="col">Ya</td>
+                                                @endif
+                                            @endforeach
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
     </div>
 
     <div class="modal fade" id="Modalrelasi" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"

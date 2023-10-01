@@ -4,27 +4,27 @@
             <div class="nav">
                 {{-- <div class="sb-sidenav-menu-heading"></div> --}}
                 <a class="nav-link" href="{{ url('/dashboard') }}">
-                    <div class="sb-nav-link-icon"><i class="fa-solid fa-house-laptop fa-lg"></i></div>
+                    <div class="sb-nav-link-icon"><i class="fa-solid fa-house fa-2xl"></i></i></div>
                     Dashboard
                 </a>
 
                 <hr class="sidebar-divider my-1">
                 <a class="nav-link" href="{{ url('/index') }}">
-                    <div class="sb-nav-link-icon"><i class="fa-solid fa-house-laptop fa-lg"></i></div>
+                    <div class="sb-nav-link-icon"><i class="fa-solid fa-file-lines fa-2xl"></i></i></div>
                     Data Reject
                 </a>
 
                 <hr class="sidebar-divider my-1">
                 <a class="nav-link" href="{{ url('/gejala') }}">
-                    <div class="sb-nav-link-icon"><i class="fa-solid fa-house-laptop fa-lg"></i></div>
+                    <div class="sb-nav-link-icon"><i class="fa-solid fa-file-lines fa-2xl"></i></div>
                     Data Gejala
                 </a>
 
                 <hr class="sidebar-divider my-1">
                 <a class="nav-link" href="{{ url('/aturan') }}">
-                    <div class="sb-nav-link-icon"><i class="fa-solid fa-people-group fa-lg"></i></div>
-                    Relasi Kerusakan
-                </a>
+                    <div class="sb-nav-link-icon"><i class="fa-solid fa-link fa-2xl"></i></div>
+                    Relasi Reject
+                </a> 
 
                 {{-- <hr class="sidebar-divider my-1">
                 <a class="nav-link" href="{{ url('/detail') }}">

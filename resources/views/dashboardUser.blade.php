@@ -128,10 +128,9 @@
         <div class="container-fluid">
             <div class="row space-100">
                 <div class="col-lg-6 col-md-12 col-xs-12">
-                    <div class="contents">
-                        <h2 class="head-title">You are Using Free Lite Version</h2>
-                        <p>Please, Purchase full version of Slick to get all pages, features and permission to use in
-                            commercial projects</p>
+                    <div class="contents text-center">
+                        <h2 class="head-title">Sistem Pakar Reject</h2>
+                        <p>Mencari solusi kerusakan reject painting</p>
                         <div class="header-button ms-4">
                             <a type="button" class="btn btn-border-filled" data-bs-toggle="modal"
                                 data-bs-target="#konsultasi">Konsultasi</a>
