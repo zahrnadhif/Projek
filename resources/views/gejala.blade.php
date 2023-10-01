@@ -90,7 +90,7 @@
         // @endif
         toastr.success('Have fun storming the castle!', 'Miracle Max Says')
     </script> --}}
-    </div>
+    {{-- </div> --}}
     <div class="container-fluid mt-3">
 
         <div class="row mt-3">
