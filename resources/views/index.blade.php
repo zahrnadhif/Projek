@@ -122,7 +122,7 @@
                                     <th scope="col" class="text-center">No</th>
                                     <th scope="col" class="text-center">ID Reject</th>
                                     <th scope="col" class="text-center">Keterangan</th>
-                                    <th scope="col" class="text-center">Gambar</th>
+                                    {{-- <th scope="col" class="text-center">Gambar</th> --}}
                                     <th scope="col" class="text-center">Aksi</th>
                             </thead>
                             <tbody>
@@ -134,18 +134,16 @@
                                         <td class="text-center">{{ $no++ }}</td>
                                         <td class="text-center">{{ $reject->id_reject }}</td>
                                         <td class="text-center">{{ $reject->nama }}</td>
-                                        <td class="text-center">
-                                        </td>
+                                        {{-- <td class="text-center">
+                                        </td> --}}
                                         <td class="text-center">
                                             <button type="button" class="btn btn-primary mx-1"
                                                 onclick="editReject('{{ $reject->id_reject }}')">Edit</button>
-                                            <a href="delete/{{ $reject->id }}" class="btn btn-danger"
-                                                id="delete">Hapus</a>
+                                            <button type="button" onclick="deleteRecord('{{ $reject->id_reject }}')"
+                                                class="btn btn-danger" id="delete">Hapus</button>
+                                            <meta name="csrf-token" content="{{ csrf_token() }}">
                                         </td>
                                     </tr>
-                                    @php
-                                        $no = $no + 1;
-                                    @endphp
                                 @endforeach
                             </tbody>
                         </table>
@@ -229,6 +227,27 @@
                 }
             );
             console.log('aneh')
+        }
+
+        function deleteRecord(kode) {
+            console.log(kode);
+            if (confirm('Apakah anda yakin akan menghapus ini?')) {
+                var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+                fetch('/reject/' + kode, {
+                    method: 'DELETE',
+                    headers: {
+                        'X-CSRF-Token': csrfToken
+                    }
+                }).then(response => {
+                    if (response.ok) {
+                        location.reload();
+                    } else {
+                        console.log('Delete request failed.');
+                    }
+                });
+            } else {
+
+            }
         }
     </script>
 @endsection

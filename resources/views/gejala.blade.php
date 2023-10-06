@@ -126,8 +126,8 @@
                                         <td class="text-center">
                                             <a href="/tampilGejala/{{ $dtgejalas->id }}"
                                                 class="btn btn-primary mx-1">Edit</a>
-                                            <a href="/hapus/{{ $dtgejalas->id }}" class="btn btn-danger"
-                                                id="delete">Hapus</a>
+                                            <button type="button" onclick="deleteRecord('{{ $dtgejalas->id_gejala }}')"
+                                                class="btn btn-danger" id="delete">Hapus</button>
                                         </td>
                                     </tr>
                                     {{-- @php
@@ -201,6 +201,28 @@
         </div>
     </div>
 
+    {{-- Modal Edit --}}
+    <div class="modal fade" id="modalEditReject" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg ">
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fs-5" id="modalEditRejectLabel">Tambah Data</h5>
+                    <button type="button" class="btn-danger rounded btn-close" data-bs-dismiss="modal"
+                        aria-label="Close" onclick="closeModal()"></button>
+                </div>
+                <div class="modal-body" id="tesrt">
+
+                </div>
+                <div class="modal-footer">
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <script>
         // Untuk Membuat Id Gejala Otomatis
         let idGejala = document.getElementById('id_gejala');
@@ -233,6 +255,40 @@
             $('.kolom').remove();
             $('.btnHapus').remove();
             // number -= 1;
+        }
+
+        // Hapus Gejala
+        function deleteRecord(kode) {
+            console.log(kode);
+            if (confirm('Apakah anda yakin akan menghapus ini?')) {
+                var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+                fetch('/gejala/' + kode, {
+                    method: 'DELETE',
+                    headers: {
+                        'X-CSRF-Token': csrfToken
+                    }
+                }).then(response => {
+                    if (response.ok) {
+                        location.reload();
+                    } else {
+                        console.log('Delete request failed.');
+                    }
+                });
+            } else {
+
+            }
+        }
+
+        function editGejala(gejala) {
+            $.get(
+                "/partial/modal/gejala" + "/" + gejala, {},
+                function(data) {
+                    $("#modalEditGejalaLabel").html("Edit Jenis Gejala " + gejala); //Untuk kasih judul di modal
+                    $("#modalEdiGejala").modal("show"); //kalo ID pake "#" kalo class pake "."
+                    $('#modalEditGejala .modal-body').load("/partial/modal/gejala" + "/" + gejala);
+                }
+            );
+            console.log('aneh')
         }
     </script>
 @endsection
