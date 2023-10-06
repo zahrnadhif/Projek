@@ -90,6 +90,13 @@ class GejalaController extends Controller
         return redirect()->route('gejala', compact('datagejala', 'dataSolusi'))->with('success', 'Data Berhasil Di Tambahkan');
     }
 
+
+    public function destroyGejala($gejala)
+    {
+        $data = GejalaModel::where('id_gejala', $gejala)->first();
+        $data->delete();
+        // return view('modalEditReject', compact('data'));
+    }
     public function tampilGejala($id)
     {
         $datagejala = Gejala::find($id);

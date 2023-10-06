@@ -54,6 +54,25 @@ class RejectController extends Controller
         return view('modalEditReject', compact('data'));
     }
 
+    public function UpdateReject(Request $request, $reject)
+    {
+        $idReject = RejectModel::Where('id_reject', $reject)->first();
+        $idReject->update([
+            'nama' => $request->nama_reject
+        ]);
+        $data = RejectModel::all(); //Memanggil  data pada tabel Reject
+
+        return redirect()->route('index', compact('data'))->with('success', 'Data Berhasil Di Update');
+    }
+
+    public function destroyReject($reject)
+    {
+        $data = RejectModel::where('id_reject', $reject)->first();
+        $data->delete();
+        // return view('modalEditReject', compact('data'));
+    }
+
+
     public function tambahData()
     {
         return view('tambah');

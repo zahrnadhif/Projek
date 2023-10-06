@@ -56,7 +56,19 @@
         <div class="row mt-3">
             <div class="col-md-12">
                 <div class="card shadow rounded">
-                    <div class="card-header"> Relasi Gejala dan Kerusakan</div>
+                    <div class="card-header">
+                        <div class="row d-flex justify-content-between">
+                            <div class="col-6">
+                                <h5>Relasi Gejala dan Kerusakan</h5>
+                            </div>
+                            <div class="col-3">
+                                <button type="button" class="btn btn-success mb-2" data-bs-toggle="modal"
+                                    data-bs-target="#showGejala">Data Gejala</button>
+                                <button type="button" class="btn btn-success mb-2" data-bs-toggle="modal"
+                                    data-bs-target="#showReject">Data Reject</button>
+                            </div>
+                        </div>
+                    </div>
                     <div class="card-body">
                         {{-- <a href="/tambahGejala" type="button" class="btn btn-success mb-2" data-bs-toggle="modal" data-bs-target="#tambah">Tambah</a>    --}}
                         <div class="table-responsive">
@@ -100,39 +112,138 @@
                     </div>
                 </div>
             </div>
-    </div>
-
-    <div class="modal fade" id="Modalrelasi" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg ">
-
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title fs-5" id="ModalrelasiLabel">Tambah Data</h5>
-                    <button type="button" class="btn-danger rounded btn-close" data-bs-dismiss="modal" aria-label="Close"
-                        onclick="closeModal()"></button>
-                </div>
-                <div class="modal-body">
-
-                </div>
-                <div class="modal-footer">
-
-                </div>
-            </div>
-
         </div>
-    </div>
 
-    <script>
-        function updateRelasi(reject) {
-            $.get(
-                "/partial/modal/relasi" + "/" + reject, {},
-                function(data) {
-                    $("#ModalrelasiLabel").html("Edit Relasi " + reject); //Untuk kasih judul di modal
-                    $("#Modalrelasi").modal("show"); //kalo ID pake "#" kalo class pake "."
-                    $('#Modalrelasi .modal-body').load("/partial/modal/relasi" + "/" + reject);
-                }
-            );
-        }
-    </script>
-@endsection
+        <div class="modal fade" id="Modalrelasi" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg ">
+
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title fs-5" id="ModalrelasiLabel">Tambah Data</h5>
+                        <button type="button" class="btn-danger rounded btn-close" data-bs-dismiss="modal"
+                            aria-label="Close" onclick="closeModal()"></button>
+                    </div>
+                    <div class="modal-body">
+
+                    </div>
+                    <div class="modal-footer">
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        {{-- Modal Show Gejala --}}
+        <div class="modal fade" id="showGejala" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-md ">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title fs-5" id="ModalrelasiLabel"> Data Gejala</h5>
+                        <button type="button" class="btn-danger rounded btn-close" data-bs-dismiss="modal"
+                            aria-label="Close" onclick="closeModal()"></button>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table table-bordered">
+                            <thead>
+                                <th>No</th>
+                                <th>Kode Gejala</th>
+                                <th>Nama Gejala</th>
+                                <th>Solusi</th>
+                            </thead>
+                            <tbody>
+                                @php
+                                    $no = 1;
+                                @endphp
+                                @foreach ($dataGejala as $dtgejalas)
+                                    <tr>
+                                        <td class="text-center">{{ $no++ }}</td>
+                                        <td class="text-center">{{ $dtgejalas->id_gejala }} </td>
+                                        <td>{{ $dtgejalas->nama }}</td>
+
+                                        <td>{{ $dtgejalas->solusi->keterangan }}</td>
+
+
+                                    </tr>
+                                    {{-- @php
+                                    $no = $no + 1;
+                                @endphp --}}
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        {{-- Modal Show Reject --}}
+        <div class="modal fade" id="showReject" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-md ">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title fs-5" id="ModalrelasiLabel">Tambah Data</h5>
+                        <button type="button" class="btn-danger rounded btn-close" data-bs-dismiss="modal"
+                            aria-label="Close" onclick="closeModal()"></button>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th scope="col" class="text-center">No</th>
+                                    <th scope="col" class="text-center">ID Reject</th>
+                                    <th scope="col" class="text-center">Keterangan</th>
+                                    {{-- <th scope="col" class="text-center">Gambar</th> --}}
+                                    {{-- <th scope="col" class="text-center">Aksi</th> --}}
+                            </thead>
+                            <tbody>
+                                @php
+                                    $no = 1;
+                                @endphp
+                                @foreach ($dataReject as $reject)
+                                    <tr>
+                                        <td class="text-center">{{ $no++ }}</td>
+                                        <td class="text-center">{{ $reject->id_reject }}</td>
+                                        <td class="text-center">{{ $reject->nama }}</td>
+                                        {{-- <td class="text-center">
+                                        </td> --}}
+                                        {{-- <td class="text-center">
+                                            <button type="button" class="btn btn-primary mx-1"
+                                                onclick="editReject('{{ $reject->id_reject }}')">Edit</button>
+                                            <button type="button" onclick="deleteRecord('{{ $reject->id_reject }}')"
+                                                class="btn btn-danger" id="delete">Hapus</button>
+                                            <meta name="csrf-token" content="{{ csrf_token() }}">
+                                        </td> --}}
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <script>
+            function updateRelasi(reject) {
+                $.get(
+                    "/partial/modal/relasi" + "/" + reject, {},
+                    function(data) {
+                        $("#ModalrelasiLabel").html("Edit Relasi " + reject); //Untuk kasih judul di modal
+                        $("#Modalrelasi").modal("show"); //kalo ID pake "#" kalo class pake "."
+                        $('#Modalrelasi .modal-body').load("/partial/modal/relasi" + "/" + reject);
+                    }
+                );
+            }
+        </script>
+    @endsection

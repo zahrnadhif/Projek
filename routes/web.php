@@ -21,13 +21,14 @@ Route::get('/', function () {
     return view('dashboardUser');
 });
 
-Route::get('/dashboard', [RejectController::class, 'dashboard']);
+Route::get('/dashboard', [RejectController::class,  'dashboard']);
 Route::get('/home', [RejectController::class, 'home']);
 
 //REJECT
 Route::get('/index', [RejectController::class, 'index'])->name('index');
 Route::get('/partial/modal/reject/{reject}', [RejectController::class, 'modalEditReject']);
-
+Route::post('/edit/reject/{reject}', [RejectController::class, 'UpdateReject']);
+Route::delete('/reject/{kode}', [RejectController::class, 'destroyReject']);
 
 //nambah data
 Route::get('/tambahData', [RejectController::class, 'tambahData']);
@@ -55,7 +56,7 @@ Route::get('/gejala', [GejalaController::class, 'gejala'])->name('gejala');
 //nambah data
 Route::get('/tambahGejala', [GejalaController::class, 'tambahGejala']);
 Route::post('/insertGejala', [GejalaController::class, 'insertGejala']);
-
+Route::delete('/gejala/{gejala}', [GejalaController::class, 'destroyGejala']);
 // Route::get('/tablet', function(){
 //     return view('tablet.tablet');
 // });
@@ -66,11 +67,12 @@ Route::post('/insertGejala', [GejalaController::class, 'insertGejala']);
 
 Route::get('/login', function () {
     return view('login');
-});
+})->name('login');
 
 //Api
 Route::get('/dtkyrw/{nrp}', [ApiController::class, 'dtkyrw']);
 
 //Auth
-//Login User
-Route::post('/login/user', [AuthController::class, 'LoginUser']);
+//Login 
+Route::post('/login/masuk', [AuthController::class, 'LoginEngineering']);
+Route::get('/logout', [AuthController::class, 'logout']);
