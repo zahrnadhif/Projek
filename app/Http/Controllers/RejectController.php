@@ -9,6 +9,7 @@ use App\Models\KonsultasiGejalaModel;
 use App\Models\KonsultasiModel;
 use App\Models\RejectGejalaModel;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
 
 class RejectController extends Controller
@@ -205,10 +206,17 @@ class RejectController extends Controller
 
                 if ($getGejala == null) {
                     $id = $id->id;
+                    $idKonsultasi = KonsultasiModel::where('id', $id)->first();
                     if ($getRelasi1 == null) {
                         $reject = 0;
+                        $idKonsultasi->update([
+                            'kode_reject' => null
+                        ]);
                     } else {
                         $reject = $getRelasi1->kode_reject;
+                        $idKonsultasi->update([
+                            'kode_reject' => $reject
+                        ]);
                     }
 
                     $jenisReject = RejectModel::where('id_reject', $reject)->first();
@@ -263,10 +271,17 @@ class RejectController extends Controller
 
                 if ($getGejala == null) {
                     $id = $id->id;
+                    $idKonsultasi = KonsultasiModel::where('id', $id)->first();
                     if ($getRelasi1 == null) {
                         $reject = 0;
+                        $idKonsultasi->update([
+                            'kode_reject' => null
+                        ]);
                     } else {
                         $reject = $getRelasi1->kode_reject;
+                        $idKonsultasi->update([
+                            'kode_reject' => $reject
+                        ]);
                     }
 
                     $jenisReject = RejectModel::where('id_reject', $reject)->first();
@@ -327,8 +342,13 @@ class RejectController extends Controller
                     $bukanGejala = null;
                     $bukanReject = null;
 
-                    $id = $id->id;
+                    $idKonsultasi = KonsultasiModel::where('id', $id)->first();
+
                     $reject = $getRelasi1->kode_reject;
+                    $idKonsultasi->update([
+                        'kode_reject' => $reject
+                    ]);
+
                     $jenisReject = RejectModel::where('id_reject', $reject)->first();
                     $getGejala = KonsultasiGejalaModel::where('kode_konsultasi', $id)->get();
                     foreach ($getGejala as $key) {
@@ -372,6 +392,10 @@ class RejectController extends Controller
                 if ($gejalaPertama == null) {
                     $id = $id->id;
                     $reject = 0;
+                    $idKonsultasi = KonsultasiModel::where('id', $id)->first();
+                    $idKonsultasi->update([
+                        'kode_reject' => null
+                    ]);
                     $jenisReject = null;
                     $gejala = null;
                     return redirect()->route('hasilKonsultasi', compact('id', 'gejala', 'jenisReject', 'reject'));
@@ -404,6 +428,13 @@ class RejectController extends Controller
 
                         $id = $id->id;
                         $reject = $getRelasi1->kode_reject;
+                        $idKonsultasi = KonsultasiModel::where('id', $id)->first();
+
+                        $reject = $getRelasi1->kode_reject;
+                        $idKonsultasi->update([
+                            'kode_reject' => $reject
+                        ]);
+
                         $jenisReject = RejectModel::where('id_reject', $reject)->first();
                         $getGejala = KonsultasiGejalaModel::where('kode_konsultasi', $id)->get();
                         foreach ($getGejala as $key) {
@@ -430,6 +461,13 @@ class RejectController extends Controller
 
                         $id = $id->id;
                         $reject = $getRelasi1->kode_reject;
+                        $idKonsultasi = KonsultasiModel::where('id', $id)->first();
+
+                        $reject = $getRelasi1->kode_reject;
+                        $idKonsultasi->update([
+                            'kode_reject' => $reject
+                        ]);
+
                         $jenisReject = RejectModel::where('id_reject', $reject)->first();
                         $getGejala = KonsultasiGejalaModel::where('kode_konsultasi', $id)->get();
                         foreach ($getGejala as $key) {
@@ -483,6 +521,13 @@ class RejectController extends Controller
 
                         $id = $id->id;
                         $reject = $getRelasi1->kode_reject;
+                        $idKonsultasi = KonsultasiModel::where('id', $id)->first();
+
+                        $reject = $getRelasi1->kode_reject;
+                        $idKonsultasi->update([
+                            'kode_reject' => $reject
+                        ]);
+
                         $jenisReject = RejectModel::where('id_reject', $reject)->first();
                         $getGejala = KonsultasiGejalaModel::where('kode_konsultasi', $id)->get();
                         foreach ($getGejala as $key) {
@@ -516,6 +561,39 @@ class RejectController extends Controller
         // dd($getGejala);
         return view('hasilDiagnosa', compact('id', 'gejala', 'jenisReject', 'reject'));
     }
+
+
+    public function riwayatUser()
+    {
+        // Get the current date
+        $currentDate = Carbon::now()->toDateString();
+
+        $data = KonsultasiModel::whereDate('created_at', $currentDate)->get();
+        return view('riwayatUser', compact('data'));
+    }
+
+    public function dataRelasi()
+    {
+        $dataGejala = GejalaModel::orderBy('created_at')->get();
+        $dataReject = RejectModel::orderBy('created_at')->get();
+        $relasi = RejectGejalaModel::orderBy('created_at')->get();
+        return view('dataRelasi', compact('dataGejala', 'dataReject', 'relasi'));
+    }
+
+    public function modalDetailRiwayat($id)
+    {
+        $dataKonsultasi = KonsultasiModel::where('id', $id)->first();
+        $getGejala = KonsultasiGejalaModel::where('kode_konsultasi', $id)->get();
+        // dd($getGejala);
+        if (count($getGejala) == 0) {
+            $gejala = null;
+        }
+        foreach ($getGejala as $key) {
+            $gejala[] = GejalaModel::where('id_gejala', $key->kode_gejala)->first();
+        }
+        return view('modalDetailRiwayat', compact('dataKonsultasi', 'gejala'));
+    }
+
     public function formKonsultasi()
     {
 

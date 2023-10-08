@@ -9,7 +9,10 @@
                 <a class="nav-link  ms-2" href="{{ url('/home') }}">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link  ms-2" href="{{ url('/home') }}">Riwayat</a>
+                <a class="nav-link  ms-2" href="{{ url('/riwayat') }}">Riwayat</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link  ms-2" href="{{ url('/dataRelasi') }}">Data</a>
             </li>
             {{-- <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="{{ url('/index') }}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

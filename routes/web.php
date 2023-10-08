@@ -4,6 +4,7 @@ use App\Http\Controllers\GejalaController;
 use App\Http\Controllers\RejectController;
 use App\Http\Controllers\ApiController;
 use App\Http\Controllers\AuthController;
+use App\Models\Gejala;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -50,9 +51,17 @@ Route::get('/formKonsultasi', [RejectController::class, 'formKonsultasi']);
 Route::get('/detail', [RejectController::class, 'detail']);
 Route::post('/submitKonsultasi/{id}/{urutan}', [RejectController::class, 'submitKonsultasi1']);
 Route::get('/hasil/{id}/{reject}', [RejectController::class, 'hasilKonsultasi'])->name('hasilKonsultasi');
+//RiwayatUSER
+Route::get('/riwayat', [RejectController::class, 'riwayatUser']);
+//Data  Relasi User 
+Route::get('/dataRelasi', [RejectController::class, 'dataRelasi']);
+Route::get('/modal/detail/riwayat/{id}', [RejectController::class, 'modalDetailRiwayat'])->name('modaldetailRiwayat');
+
 
 // Gejala
 Route::get('/gejala', [GejalaController::class, 'gejala'])->name('gejala');
+Route::get('/tampil/gejala/{id}', [GejalaController::class, 'tampilGejala']);
+Route::post('/updateGejala/{id}', [GejalaController::class, 'updateGejala']);
 //nambah data
 Route::get('/tambahGejala', [GejalaController::class, 'tambahGejala']);
 Route::post('/insertGejala', [GejalaController::class, 'insertGejala']);
@@ -71,6 +80,7 @@ Route::get('/login', function () {
 
 //Api
 Route::get('/dtkyrw/{nrp}', [ApiController::class, 'dtkyrw']);
+Route::get('/api/riwayat/', [ApiController::class, 'dataRiwayat'])->name('dataRiwayat');
 
 //Auth
 //Login 

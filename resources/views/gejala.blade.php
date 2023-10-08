@@ -124,7 +124,7 @@
                                         <td class="text-center">{{ $dtgejalas->id_gejala }} </td>
                                         <td>{{ $dtgejalas->nama }}</td>
                                         <td class="text-center">
-                                            <a href="/tampilGejala/{{ $dtgejalas->id }}"
+                                            <a href="/tampil/gejala/{{ $dtgejalas->id_gejala }}"
                                                 class="btn btn-primary mx-1">Edit</a>
                                             <button type="button" onclick="deleteRecord('{{ $dtgejalas->id_gejala }}')"
                                                 class="btn btn-danger" id="delete">Hapus</button>

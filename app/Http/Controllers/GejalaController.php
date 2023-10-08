@@ -97,17 +97,67 @@ class GejalaController extends Controller
         $data->delete();
         // return view('modalEditReject', compact('data'));
     }
+
     public function tampilGejala($id)
     {
-        $datagejala = Gejala::find($id);
+        $datagejala = GejalaModel::find($id);
+        $dataSolusi = SolusiModel::all();
 
-        return view('tampilGejala', compact('datagejala'));
+        return view('tampilGejala', compact('datagejala', 'dataSolusi'));
     }
 
     public function updateGejala(Request $request, $id)
     {
-        $datagejala = Gejala::find($id);
-        $datagejala->update($request->all());
+        $datagejala = GejalaModel::where('id_gejala', $id)->first();
+
+        //Update data dasar 
+
+        $datagejala->update([
+            'nama' => $request->keterangan_gejala,
+        ]);
+        if ($request->gambar_baru != null) {
+            //Custom nama gambar
+            $filename = 'image_' .  $request->id_gejala . '.' . $request->gambar_baru->getClientOriginalExtension();
+
+            // dd($filename);
+
+            // Store the uploaded image in the public/images directory
+            $request->gambar_baru->move(public_path('imageGejala'), $filename);
+
+            $datagejala->update([
+                'gambar' => $filename,
+            ]);
+        }
+
+        if ($request->solusi_baru != null) {
+            $cekSolusi = $request->keterangan_solusi_baru;
+            // dd($cekSolusi);
+            if ($cekSolusi != null) {
+                // dd('1');
+                // Membuat id solusi baru
+                $dataSolusi = SolusiModel::all();
+                $lastSolusi = $dataSolusi->last();
+                // Remove 'S' and convert to an integer
+                $lastId = (int)str_replace('S', '', $lastSolusi->id_solusi);
+                $newId = 'S' . ($lastId + 1);
+
+                SolusiModel::create([
+                    'id_solusi' =>  $newId,
+                    'keterangan' => $request->keterangan_solusi_baru
+                ]);
+
+                // Membuat id Gejala Baru
+                $datagejala->update([
+                    'kode_solusi' => $request->keterangan_solusi_baru,
+                ]);
+            } else {
+                // dd('2');
+                // Membuat id Gejala Baru
+                $datagejala->update([
+                    'kode_solusi' => $request->solusi_baru,
+                ]);
+            }
+        }
 
         return redirect()->route('gejala')->with('success', 'Data Berhasil Di Update');
     }
