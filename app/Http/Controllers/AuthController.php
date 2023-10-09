@@ -22,13 +22,13 @@ class AuthController extends Controller
             // Note: This is NOT secure in production. Use proper password encryption like bcrypt.
             // dd($user->jabatan);
 
-            if ($user->jabatan == 'Engineering') {
+            if ($user->jabatan == 'ENGINEERING' || $user->jabatan == 'FOREMAN') {
                 auth()->login($user);
 
                 // Redirect the user to the desired location after login
                 return redirect('/dashboard');
             } else {
-                return redirect()->route('login')->with('error', 'Anda Bukan Engineering');
+                return redirect()->route('login')->with('error', 'Anda Bukan Engineering atau Foreman');
             }
         } else {
             // Authentication failed, redirect back to the login page with an error message.

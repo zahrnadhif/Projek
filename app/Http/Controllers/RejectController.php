@@ -7,6 +7,7 @@ use App\Models\RejectModel;
 use App\Models\GejalaModel;
 use App\Models\KonsultasiGejalaModel;
 use App\Models\KonsultasiModel;
+use App\Models\PerbaikanModel;
 use App\Models\RejectGejalaModel;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
@@ -592,6 +593,53 @@ class RejectController extends Controller
             $gejala[] = GejalaModel::where('id_gejala', $key->kode_gejala)->first();
         }
         return view('modalDetailRiwayat', compact('dataKonsultasi', 'gejala'));
+    }
+
+    public function modalPerbaikan($id)
+    {
+        $dataKonsultasi = KonsultasiModel::where('id', $id)->first();
+        $getGejala = KonsultasiGejalaModel::where('kode_konsultasi', $id)->get();
+        // dd($getGejala);
+        if (count($getGejala) == 0) {
+            $gejala = null;
+        }
+        foreach ($getGejala as $key) {
+            $gejala[] = GejalaModel::where('id_gejala', $key->kode_gejala)->first();
+        }
+        return view('modalPerbaikan', compact('dataKonsultasi', 'gejala'));
+    }
+
+    public function isiPerbaikan(Request $request, $id)
+    {
+        // Get the current date
+        // dd($request, $id);
+        PerbaikanModel::create([
+            'keterangan' => $request->keterangan_perbaikan,
+            'kode_konsultasi' => $id
+        ]);
+
+
+        return redirect('/data/perbaikan');
+    }
+
+
+    public function dataKonsultasi()
+    {
+        // Get the current date
+        $currentDate = Carbon::now()->toDateString();
+
+        $dataToday = KonsultasiModel::whereDate('created_at', $currentDate)->get();
+        $data = KonsultasiModel::all();
+        return view('dataKonsultasi', compact('data', 'dataToday'));
+    }
+
+    public function dataPerbaikan()
+    {
+        // Get the current date
+        $currentDate = Carbon::now()->toDateString();
+
+        $data = PerbaikanModel::all();
+        return view('perbaikan', compact('data'));
     }
 
     public function formKonsultasi()

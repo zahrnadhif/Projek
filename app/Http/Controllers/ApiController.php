@@ -6,6 +6,7 @@ use App\Models\KonsultasiModel;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
+use Carbon\Carbon;
 
 class ApiController extends Controller
 {
@@ -53,7 +54,9 @@ class ApiController extends Controller
 
     public function grafikRiwayat()
     {
-        $data = KonsultasiModel::all();
+        $currentMonth = Carbon::now()->month;
+        $data = KonsultasiModel::whereMonth('created_at', $currentMonth)->get();
+
         return $data;
         // return $exuser;
     }

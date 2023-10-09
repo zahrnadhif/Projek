@@ -7,25 +7,36 @@
                     <div class="sb-nav-link-icon"><i class="fa-solid fa-house fa-2xl"></i></i></div>
                     Dashboard
                 </a>
+                @if (Auth::user()->isEngineering())
+                    <hr class="sidebar-divider my-1">
+                    <a class="nav-link" href="{{ url('/index') }}">
+                        <div class="sb-nav-link-icon"><i class="fa-solid fa-file-lines fa-2xl"></i></div>
+                        Data Reject
+                    </a>
 
-                <hr class="sidebar-divider my-1">
-                <a class="nav-link" href="{{ url('/index') }}">
-                    <div class="sb-nav-link-icon"><i class="fa-solid fa-file-lines fa-2xl"></i></i></div>
-                    Data Reject
-                </a>
-
-                <hr class="sidebar-divider my-1">
-                <a class="nav-link" href="{{ url('/gejala') }}">
-                    <div class="sb-nav-link-icon"><i class="fa-solid fa-file-lines fa-2xl"></i></div>
-                    Data Gejala
-                </a>
+                    <hr class="sidebar-divider my-1">
+                    <a class="nav-link" href="{{ url('/gejala') }}">
+                        <div class="sb-nav-link-icon"><i class="fa-solid fa-file-lines fa-2xl"></i></div>
+                        Data Gejala
+                    </a>
+                @elseif(Auth::user()->isForeman())
+                    <hr class="sidebar-divider my-1">
+                    <a class="nav-link" href="{{ url('/data/konsultasi') }}">
+                        <div class="sb-nav-link-icon"><i class="fa-solid fa-file-lines fa-2xl"></i></div>
+                        Data Konsultasi
+                    </a>
+                @endif
 
                 <hr class="sidebar-divider my-1">
                 <a class="nav-link" href="{{ url('/aturan') }}">
                     <div class="sb-nav-link-icon"><i class="fa-solid fa-link fa-2xl"></i></div>
                     Relasi Reject
-                </a> 
-
+                </a>
+                <hr class="sidebar-divider my-1">
+                <a class="nav-link" href="{{ url('/data/perbaikan') }}">
+                    <div class="sb-nav-link-icon"><i class="fa-solid fa-file-lines fa-2xl"></i></div>
+                    Data Perbaikan
+                </a>
                 {{-- <hr class="sidebar-divider my-1">
                 <a class="nav-link" href="{{ url('/detail') }}">
                     <div class="sb-nav-link-icon"><i class="fa-solid fa-people-group fa-lg"></i></div>
@@ -33,7 +44,7 @@
                 </a> --}}
 
                 <hr class="sidebar-divider my-1">
-                <a class="nav-link" href="{{ url('/home') }}">
+                <a class="nav-link" href="{{ url('/logout') }}">
                     <div class="sb-nav-link-icon"><i class="fa-solid fa-people-group fa-lg"></i></div>
                     Logout
                 </a>
