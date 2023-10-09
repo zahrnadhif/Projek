@@ -1,20 +1,35 @@
 @extends('mainUser')
 @section('content')
     <div class="container-fluid mt-3">
+        <div class="row justify-content-end mt-3">
+            <div class="col-8 fs-4 fw-semibold">
+                Relasi Gejala & Reject
+            </div>
+            <div class="col-4 d-flex justify-content-end">
+                <button type="button" class="btn btn-success mx-1" data-bs-toggle="modal"
+                data-bs-target="#showGejala">Data Gejala</button>
+                <button type="button" class="btn btn-success " data-bs-toggle="modal"
+                    data-bs-target="#showReject">Data Reject</button>
+            </div>
+        </div>
+
+         <!-- Divider -->
+         <hr class="divider">
+
         <div class="row mt-3">
             <div class="col-md-12">
                 <div class="card shadow rounded">
                     <div class="card-header">
                         <div class="row d-flex justify-content-between">
                             <div class="col-6">
-                                <h5>Relasi Gejala dan Kerusakan</h5>
+                                <h5>Relasi Gejala & Reject</h5>
                             </div>
-                            <div class="col-3">
+                            {{-- <div class="col-3">
                                 <button type="button" class="btn btn-success mb-2" data-bs-toggle="modal"
                                     data-bs-target="#showGejala">Data Gejala</button>
                                 <button type="button" class="btn btn-success mb-2" data-bs-toggle="modal"
                                     data-bs-target="#showReject">Data Reject</button>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                     <div class="card-body">

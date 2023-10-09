@@ -53,26 +53,36 @@
     @endif
 
     <div class="container-fluid mt-3">
+        <div class="row justify-content-end mt-3">
+            <div class="col-8 fs-4 fw-semibold">
+                Relasi Gejala & Reject
+            </div>
+            <div class="col-4 d-flex justify-content-end">
+                <button type="button" class="btn btn-success mx-1" data-bs-toggle="modal"
+                    data-bs-target="#showGejala">Data Gejala</button>
+                <button type="button" class="btn btn-success " data-bs-toggle="modal"
+                    data-bs-target="#showReject">Data Reject</button>
+            </div>
+        </div>
+
+        <!-- Divider -->
+        <hr class="divider">
+
         <div class="row mt-3">
             <div class="col-md-12">
                 <div class="card shadow rounded">
                     <div class="card-header">
                         <div class="row d-flex justify-content-between">
                             <div class="col-6">
-                                <h5>Relasi Gejala dan Kerusakan</h5>
+                                <h5>Relasi Gejala & Reject</h5>
                             </div>
-                            <div class="col-3">
-                                <button type="button" class="btn btn-success mb-2" data-bs-toggle="modal"
-                                    data-bs-target="#showGejala">Data Gejala</button>
-                                <button type="button" class="btn btn-success mb-2" data-bs-toggle="modal"
-                                    data-bs-target="#showReject">Data Reject</button>
-                            </div>
+                            
                         </div>
                     </div>
                     <div class="card-body">
                         {{-- <a href="/tambahGejala" type="button" class="btn btn-success mb-2" data-bs-toggle="modal" data-bs-target="#tambah">Tambah</a>    --}}
                         <div cla ss="table-responsive">
-                            <table class="table table-bordered">
+                            <table class="table table-bordered text-center">
                                 <thead>
                                     <th scope="col">No</th>
                                     <th scope="col">Alternatif</th>
@@ -189,7 +199,7 @@
             <div class="modal-dialog modal-md ">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title fs-5" id="ModalrelasiLabel">Tambah Data</h5>
+                        <h5 class="modal-title fs-5" id="ModalrelasiLabel">Data Reject</h5>
                         <button type="button" class="btn-danger rounded btn-close" data-bs-dismiss="modal"
                             aria-label="Close" onclick="closeModal()"></button>
                     </div>
@@ -198,7 +208,7 @@
                             <thead>
                                 <tr>
                                     <th scope="col" class="text-center">No</th>
-                                    <th scope="col" class="text-center">ID Reject</th>
+                                    <th scope="col" class="text-center">Kode Reject</th>
                                     <th scope="col" class="text-center">Keterangan</th>
                                     {{-- <th scope="col" class="text-center">Gambar</th> --}}
                                     {{-- <th scope="col" class="text-center">Aksi</th> --}}

@@ -3,20 +3,21 @@
     <div class="main-content">
         <div class="container-fluid">
             <div class="row mt-3">
-                {{-- <div class="col"> --}}
-                <div class="card">
-                    <div class="card-header">
-                        REJECT PAINTING
-                    </div>
-                    <div class="card-body">
-                        <div id="chartdiv" style="width: 500px; height: 400px;">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            REJECT PAINTING
+                        </div>
+                        <div class="card-body">
+                            <div id="chartdiv" style="width: 300px; height: 300px;">
+                            </div>
                         </div>
                     </div>
                 </div>
-                {{-- </div> --}}
             </div>
             <div class="row mt-2">
-                <div class="card ">
+              <div class="col-md-12">
+                <div class="card">
                     <div class="card-header">Data Riwayat Konsultasi</div>
                     <div class="card-body">
                         <table class="table table-bordered data-table">
@@ -35,6 +36,7 @@
                         </table>
                     </div>
                 </div>
+              </div>
             </div>
         </div>
     </div>

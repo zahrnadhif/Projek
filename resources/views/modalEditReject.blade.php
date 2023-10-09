@@ -3,7 +3,7 @@
         @csrf
         <div class="row">
             <div class="col-12 mb-3">
-                <label for="id_reject" class="form-label">ID Reject</label>
+                <label for="id_reject" class="form-label">Kode Reject</label>
                 <input type="text" class="form-control border-primary" id="id_reject" name="id_reject"
                     value="{{ $data->id_reject }}" aria-describedby="emailHelp" required readonly>
             </div>

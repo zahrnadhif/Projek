@@ -14,8 +14,8 @@
   {{-- KANAN --}}
   <div class="col-4 text-sm-center">
     {{-- <ul class="navbar-nav "> --}}
-      <div class=" fs-3 fw-bold" id="MyClockDisplay" onload="showTime()">
-      </div>
+      {{-- <div class=" fs-3 fw-bold" id="MyClockDisplay" onload="showTime()">
+      </div> --}}
     {{-- </ul> --}}
   </div>
 </nav>
