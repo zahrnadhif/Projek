@@ -130,7 +130,7 @@
                 <div class="col-lg-6 col-md-12 col-xs-12">
                     <div class="contents text-center">
                         <h2 class="head-title">Sistem Pakar Reject</h2>
-                        <p>Mencari solusi kerusakan reject painting</p>
+                        <p>Mencari solusi reject</p>
                         <div class="header-button ms-4">
                             <a type="button" class="btn btn-border-filled" data-bs-toggle="modal"
                                 data-bs-target="#konsultasi">Konsultasi</a>

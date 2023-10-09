@@ -3,6 +3,10 @@
 <script src="/css/bootstrap-5.2.2-dist/bootstrap-5.2.2-dist/js/bootstrap.js"></script>
 
 <style>
+    body {
+        background-image: url('/img/backgroundCasting.jpg');
+        background-size: cover;
+    }
     .login {
         color: #000;
         text-transform: uppercase;
@@ -102,9 +106,12 @@
         <strong>{{ $message }}</strong>
     </span>
 @enderror
+
+@extends('mainUser')
+@section('content')
 <div class="container">
-    <div class="row ">
-        <div class="col ">
+    <div class="row d-flex justify-content-center align-items-center h-75 mt-5" >
+        <div class="col d-flex justify-content-center">
             <form action="/login/masuk" method="post">
                 @csrf
                 <div class="card">
@@ -128,4 +135,4 @@
         </div>
     </div>
 </div>
-{{-- @endsection --}}
+@endsection
