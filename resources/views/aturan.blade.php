@@ -89,8 +89,11 @@
                                         <tr>
                                             <td>{{ $no++ }}</td>
                                             <td>{{ $reject->nama }}</td>
-                                            <td> <button class="btn btn-info" type="button"
-                                                    onclick="updateRelasi('{{ $reject->id_reject }}')">Update</button></td>
+                                            @if (Auth::user()->isEngineering())
+                                                <td> <button class="btn btn-info" type="button"
+                                                        onclick="updateRelasi('{{ $reject->id_reject }}')">Update</button>
+                                                </td>
+                                            @endif
                                             @foreach ($dataGejala as $gejala)
                                                 @php
                                                     $dataRelasi = $relasi
@@ -242,7 +245,7 @@
                     $("#ModalrelasiLabel").html("Edit Relasi " + reject); //Untuk kasih judul di modal
                     $("#Modalrelasi").modal("show"); //kalo ID pake "#" kalo class pake "."
                     $('#Modalrelasi .modal-body').load("/partial/modal/relasi" + "/" + reject);
-            }
+                }
             );
         }
     </script>
