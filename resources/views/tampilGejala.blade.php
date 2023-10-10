@@ -15,7 +15,7 @@
                                 enctype="multipart/form-data">
                                 @csrf
                                 <div class="mb-3">
-                                    <label for="id_gejala" class="form-label">Id Gejala</label>
+                                    <label for="id_gejala" class="form-label">Kode Gejala</label>
                                     <input type="text" name="id_gejala" class="form-control" id="id_gejala"
                                         value="{{ $datagejala->id_gejala }}" readonly>
                                 </div>
@@ -30,8 +30,8 @@
                                         value="{{ $datagejala->solusi->keterangan }}">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="keterangan_gejalagambar_gejala" class="form-label"> <strong>Gambar
-                                            Gejala</strong>
+                                    <label for="keterangan_gejalagambar_gejala" class="form-label"> Gambar
+                                            Gejala
                                     </label>
                                     <img width="700" src="/imageGejala/{{ $datagejala->gambar }}" alt=""
                                         srcset="">
@@ -72,10 +72,13 @@
                                             Solusi Baru</button>
                                     </div>
                                 </div>
+                               <div class="row d-flex justify-content-center">
+                                    <div class="col-12 mb-3 d-flex justify-content-center">
+                                        <button type="submit" class="btn btn-primary d-flex justify-content-center">Submit</button>
+                                    </div>
+                               </div>
                         </div>
-                        <div class=" col-6 mb-3 d-flex justify-content-center">
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </div>
+                       
                         </form>
                     </div>
                 </div>

@@ -112,15 +112,15 @@
             @endif
             <div class="col-md-12">
                 <div class="card shadow rounded">
-                    <div class="card-header"> Data Jenis Reject</div>
+                    <div class="card-header"> Data Reject</div>
                     <div class="card-body">
-                        <a type="button" class="btn btn-success mb-2" data-bs-toggle="modal"
+                        <a type="button" class="btn btn-success mb-3" data-bs-toggle="modal"
                             data-bs-target="#tambah">Tambah</a>
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
                                     <th scope="col" class="text-center">No</th>
-                                    <th scope="col" class="text-center">ID Reject</th>
+                                    <th scope="col" class="text-center">Kode Reject</th>
                                     <th scope="col" class="text-center">Keterangan</th>
                                     {{-- <th scope="col" class="text-center">Gambar</th> --}}
                                     <th scope="col" class="text-center">Aksi</th>
@@ -138,7 +138,7 @@
                                         </td> --}}
                                         <td class="text-center">
                                             <button type="button" class="btn btn-primary mx-1"
-                                                onclick="editReject('{{ $reject->id_reject }}')">Edit</button>
+                                                onclick="editReject('{{ $reject->id_reject }}')">Ubah</button>
                                             <button type="button" onclick="deleteRecord('{{ $reject->id_reject }}')"
                                                 class="btn btn-danger" id="delete">Hapus</button>
                                             <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -161,14 +161,14 @@
                 @csrf
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title fs-5" id="staticBackdropLabel">Tambah Data</h5>
+                        <h5 class="modal-title fs-5" id="staticBackdropLabel">Tambah reject</h5>
                         <button type="button" class="btn-danger rounded btn-close" data-bs-dismiss="modal"
                             aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-12 mb-3">
-                                <label for="id_reject" class="form-label">ID Reject</label>
+                                <label for="id_reject" class="form-label">Kode Reject</label>
                                 <input type="text" class="form-control border-primary" id="id_reject" name="id_reject"
                                     aria-describedby="emailHelp" required readonly>
                             </div>
@@ -196,7 +196,7 @@
 
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title fs-5" id="modalEditRejectLabel">Tambah Data</h5>
+                    <h5 class="modal-title fs-5" id="modalEditRejectLabel">Tambah Reject</h5>
                     <button type="button" class="btn-danger rounded btn-close" data-bs-dismiss="modal" aria-label="Close"
                         onclick="closeModal()"></button>
                 </div>

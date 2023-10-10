@@ -13,7 +13,7 @@
                             <div class="card-body">
                                 <div class="row mt-2">
                                     <div class="col">
-                                        <div class="fs-3 fw-semibold py-3">Hasil Diagnosa </div>
+                                        <div class="fs-3 fw-semibold py-3">Hasil Konsultasi </div>
                                     </div>
                                 </div>
                                 <div class="col-12">

@@ -106,11 +106,11 @@
                     <div class="card-body">
                         <a href="/tambahGejala" type="button" class="btn btn-success mb-2" data-bs-toggle="modal"
                             data-bs-target="#tambah">Tambah</a>
-                        <table class="table table-bordered">
+                        <table class="table table-bordered text-center">
                             <thead>
                                 <tr>
                                     <th scope="col">No</th>
-                                    <th scope="col">ID Gejala</th>
+                                    <th scope="col">Kode Gejala</th>
                                     <th scope="col">Nama Gejala</th>
                                     <th scope="col">Aksi</th>
                             </thead>
@@ -125,7 +125,7 @@
                                         <td>{{ $dtgejalas->nama }}</td>
                                         <td class="text-center">
                                             <a href="/tampil/gejala/{{ $dtgejalas->id_gejala }}"
-                                                class="btn btn-primary mx-1">Edit</a>
+                                                class="btn btn-primary mx-1">Ubah</a>
                                             <button type="button" onclick="deleteRecord('{{ $dtgejalas->id_gejala }}')"
                                                 class="btn btn-danger" id="delete">Hapus</button>
                                         </td>

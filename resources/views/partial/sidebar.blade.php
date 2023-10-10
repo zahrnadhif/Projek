@@ -45,7 +45,7 @@
 
                 <hr class="sidebar-divider my-1">
                 <a class="nav-link" href="{{ url('/logout') }}">
-                    <div class="sb-nav-link-icon"><i class="fa-solid fa-people-group fa-lg"></i></div>
+                    <div class="sb-nav-link-icon"><i class="fa-solid fa-right-from-bracket fa-2xl"></i></div>
                     Logout
                 </a>
 
