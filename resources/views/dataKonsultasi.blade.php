@@ -45,8 +45,15 @@
                             {{-- <thd>KERUSAKAN</td> --}}
                             <td><button type="button" onclick="detailReject({{ $key->id }})"
                                     class="btn btn-primary">Detail</button>
-                                <button type="button" onclick="detailPerbaikan({{ $key->id }})"
-                                    class="btn btn-primary">Perbaikan</button>
+                                @if (Auth::user()->isEngineering())
+                                    <button type="button" onclick="deleteRecord('{{ $key->id }}')"
+                                        class="btn btn-danger" id="delete">Hapus</button>
+                                @elseif(Auth::user()->isForeman())
+                                    <button type="button" onclick="detailPerbaikan({{ $key->id }})"
+                                        class="btn btn-primary">Perbaikan</button>
+                                @endif
+
+
                             </td>
                         </tr>
                     @endforeach
@@ -79,8 +86,13 @@
                             {{-- <thd>KERUSAKAN</td> --}}
                             <td><button type="button" onclick="detailReject({{ $key->id }})"
                                     class="btn btn-primary">Detail</button>
-                                <button type="button" onclick="detailPerbaikan({{ $key->id }})"
-                                    class="btn btn-primary">Perbaikan</button>
+                                @if (Auth::user()->isEngineering())
+                                    <button type="button" onclick="deleteRecord('{{ $key->id }}')"
+                                        class="btn btn-danger" id="delete">Hapus</button>
+                                @elseif(Auth::user()->isForeman())
+                                    <button type="button" onclick="detailPerbaikan({{ $key->id }})"
+                                        class="btn btn-primary">Perbaikan</button>
+                                @endif
                             </td>
                         </tr>
                     @endforeach
@@ -132,8 +144,30 @@
 
         </div>
     </div>
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <script>
+        // Hapus Riwayat konsultasi
+        function deleteRecord(kode) {
+            console.log(kode);
+            if (confirm('Apakah anda yakin akan menghapus ini?')) {
+                var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+                fetch('/riwayat/konsultasi/hapus' + '/' + kode, {
+                    method: 'DELETE',
+                    headers: {
+                        'X-CSRF-Token': csrfToken
+                    }
+                }).then(response => {
+                    if (response.ok) {
+                        location.reload();
+                    } else {
+                        console.log('Delete request failed.');
+                    }
+                });
+            } else {
+
+            }
+        }
+
         function detailReject(id) {
             $.get(
                 "/modal/detail/riwayat" + "/" + id, {},

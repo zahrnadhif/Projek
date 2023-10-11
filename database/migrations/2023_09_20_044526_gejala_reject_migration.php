@@ -17,9 +17,9 @@ class GejalaRejectMigration extends Migration
             $table->id();
             $table->boolean('keterangan')->default('0');
             $table->string('kode_gejala');
-            $table->foreign('kode_gejala')->references('id_gejala')->on('db_gejala')->onDelete('cascade');
+            $table->foreign('kode_gejala')->references('kode_gejala')->on('db_gejala')->onDelete('cascade');
             $table->string('kode_reject');
-            $table->foreign('kode_reject')->references('id_reject')->on('db_reject')->onDelete('cascade');
+            $table->foreign('kode_reject')->references('kode_reject')->on('db_reject')->onDelete('cascade');
             $table->timestamps();
         });
     }

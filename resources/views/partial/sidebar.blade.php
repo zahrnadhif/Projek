@@ -27,11 +27,19 @@
                     </a>
                 @endif
 
-                <hr class="sidebar-divider my-1">
-                <a class="nav-link" href="{{ url('/aturan') }}">
-                    <div class="sb-nav-link-icon"><i class="fa-solid fa-link fa-2xl"></i></div>
-                    Relasi Reject
-                </a>
+
+                @if (Auth::user()->isEngineering())
+                    <hr class="sidebar-divider my-1">
+                    <a class="nav-link" href="{{ url('/aturan') }}">
+                        <div class="sb-nav-link-icon"><i class="fa-solid fa-link fa-2xl"></i></div>
+                        Relasi Reject
+                    </a>
+                    <hr class="sidebar-divider my-1">
+                    <a class="nav-link" href="{{ url('/data/konsultasi') }}">
+                        <div class="sb-nav-link-icon"><i class="fa-solid fa-file-lines fa-2xl"></i></div>
+                        Data Riwayat
+                    </a>
+                @endif
                 <hr class="sidebar-divider my-1">
                 <a class="nav-link" href="{{ url('/data/perbaikan') }}">
                     <div class="sb-nav-link-icon"><i class="fa-solid fa-file-lines fa-2xl"></i></div>

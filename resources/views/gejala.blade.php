@@ -121,12 +121,12 @@
                                 @foreach ($datagejala as $dtgejalas)
                                     <tr>
                                         <td class="text-center">{{ $no++ }}</td>
-                                        <td class="text-center">{{ $dtgejalas->id_gejala }} </td>
+                                        <td class="text-center">{{ $dtgejalas->kode_gejala }} </td>
                                         <td>{{ $dtgejalas->nama }}</td>
                                         <td class="text-center">
-                                            <a href="/tampil/gejala/{{ $dtgejalas->id_gejala }}"
+                                            <a href="/tampil/gejala/{{ $dtgejalas->kode_gejala }}"
                                                 class="btn btn-primary mx-1">Ubah</a>
-                                            <button type="button" onclick="deleteRecord('{{ $dtgejalas->id_gejala }}')"
+                                            <button type="button" onclick="deleteRecord('{{ $dtgejalas->kode_gejala }}')"
                                                 class="btn btn-danger" id="delete">Hapus</button>
                                         </td>
                                     </tr>
@@ -158,9 +158,9 @@
                     <div class="modal-body">
                         <div class="row" id="IsiModal">
                             <div class="col-12 mb-3">
-                                <label for="id_gejala" class="form-label">ID Gejala</label>
-                                <input type="text" class="form-control border-primary" id="id_gejala" name="id_gejala"
-                                    aria-describedby="emailHelp">
+                                <label for="kode_gejala" class="form-label">ID Gejala</label>
+                                <input type="text" class="form-control border-primary" id="kode_gejala"
+                                    name="kode_gejala" aria-describedby="emailHelp">
                             </div>
                             <div class="col-12 mb-3">
                                 <span class="mb-3">Keterangan</span>
@@ -171,7 +171,7 @@
                                 <input type="file" class="form-control" id="gambar" name="gambar">
                             </div>
                             <div class="col-12 mb-3">
-                                {{-- <label for="id_gejala" class="form-label">ID Gejala</label> --}}
+                                {{-- <label for="kode_gejala" class="form-label">ID Gejala</label> --}}
                                 <div>Pilih Jenis Solusi</div>
                                 <select id="solusi_old" class="form-select form-select-sm w-100"
                                     aria-label="Small select example" name="solusi" style="width: 100%">
@@ -225,10 +225,10 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <script>
         // Untuk Membuat Id Gejala Otomatis
-        let idGejala = document.getElementById('id_gejala');
+        let idGejala = document.getElementById('kode_gejala');
 
         let number = {{ $datagejala->count() }};
-        document.getElementById('id_gejala').value = 'G' + (number + 1);
+        document.getElementById('kode_gejala').value = 'G' + (number + 1);
         // console.log(number);
 
         //Select 2

@@ -58,10 +58,10 @@
                 Relasi Gejala & Reject
             </div>
             <div class="col-4 d-flex justify-content-end">
-                <button type="button" class="btn btn-success mx-1" data-bs-toggle="modal"
-                    data-bs-target="#showGejala">Data Gejala</button>
-                <button type="button" class="btn btn-success " data-bs-toggle="modal"
-                    data-bs-target="#showReject">Data Reject</button>
+                <button type="button" class="btn btn-success mx-1" data-bs-toggle="modal" data-bs-target="#showGejala">Data
+                    Gejala</button>
+                <button type="button" class="btn btn-success " data-bs-toggle="modal" data-bs-target="#showReject">Data
+                    Reject</button>
             </div>
         </div>
 
@@ -76,7 +76,7 @@
                             <div class="col-6">
                                 <h5>Relasi Gejala & Reject</h5>
                             </div>
-                            
+
                         </div>
                     </div>
                     <div class="card-body">
@@ -88,7 +88,7 @@
                                     <th scope="col">Alternatif</th>
                                     <th scope="col">Aksi</th>
                                     @foreach ($dataGejala as $gejala)
-                                        <th scope="col">{{ $gejala->id_gejala }}</th>
+                                        <th scope="col">{{ $gejala->kode_gejala }}</th>
                                     @endforeach
                                 </thead>
                                 <tbody>
@@ -101,14 +101,14 @@
                                             <td>{{ $reject->nama }}</td>
                                             @if (Auth::user()->isEngineering())
                                                 <td> <button class="btn btn-info" type="button"
-                                                        onclick="updateRelasi('{{ $reject->id_reject }}')">Update</button>
+                                                        onclick="updateRelasi('{{ $reject->kode_reject }}')">Update</button>
                                                 </td>
                                             @endif
                                             @foreach ($dataGejala as $gejala)
                                                 @php
                                                     $dataRelasi = $relasi
-                                                        ->where('kode_reject', $reject->id_reject)
-                                                        ->where('kode_gejala', $gejala->id_gejala)
+                                                        ->where('kode_reject', $reject->kode_reject)
+                                                        ->where('kode_gejala', $gejala->kode_gejala)
                                                         ->first();
                                                 @endphp
                                                 @if ($dataRelasi->keterangan == 0)
@@ -173,7 +173,7 @@
                                 @foreach ($dataGejala as $dtgejalas)
                                     <tr>
                                         <td class="text-center">{{ $no++ }}</td>
-                                        <td class="text-center">{{ $dtgejalas->id_gejala }} </td>
+                                        <td class="text-center">{{ $dtgejalas->kode_gejala }} </td>
                                         <td>{{ $dtgejalas->nama }}</td>
 
                                         <td>{{ $dtgejalas->solusi->keterangan }}</td>
@@ -223,14 +223,14 @@
                                 @foreach ($dataReject as $reject)
                                     <tr>
                                         <td class="text-center">{{ $no++ }}</td>
-                                        <td class="text-center">{{ $reject->id_reject }}</td>
+                                        <td class="text-center">{{ $reject->kode_reject }}</td>
                                         <td class="text-center">{{ $reject->nama }}</td>
                                         {{-- <td class="text-center">
                                         </td> --}}
                                         {{-- <td class="text-center">
                                             <button type="button" class="btn btn-primary mx-1"
-                                                onclick="editReject('{{ $reject->id_reject }}')">Edit</button>
-                                            <button type="button" onclick="deleteRecord('{{ $reject->id_reject }}')"
+                                                onclick="editReject('{{ $reject->kode_reject }}')">Edit</button>
+                                            <button type="button" onclick="deleteRecord('{{ $reject->kode_reject }}')"
                                                 class="btn btn-danger" id="delete">Hapus</button>
                                             <meta name="csrf-token" content="{{ csrf_token() }}">
                                         </td> --}}

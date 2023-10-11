@@ -9,7 +9,7 @@ class GejalaModel extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'id_gejala';
+    protected $primaryKey = 'kode_gejala';
     protected $table = 'db_gejala';
     protected $guarded = [];
     public $incrementing = false;

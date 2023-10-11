@@ -9,15 +9,15 @@
             </div>
             <div class="row justify-content-center">
                 <div class="col-10">
-                    <div class="card">
-                        <div class="card-body" id="IsiModal">
-                            <form action="/updateGejala/{{ $datagejala->id_gejala }}" method="POST"
-                                enctype="multipart/form-data">
+
+                    <form action="/updateGejala/{{ $datagejala->kode_gejala }}" method="POST" enctype="multipart/form-data">
+                        <div class="card">
+                            <div class="card-body" id="IsiModal">
                                 @csrf
                                 <div class="mb-3">
-                                    <label for="id_gejala" class="form-label">Kode Gejala</label>
-                                    <input type="text" name="id_gejala" class="form-control" id="id_gejala"
-                                        value="{{ $datagejala->id_gejala }}" readonly>
+                                    <label for="kode_gejala" class="form-label">Id Gejala</label>
+                                    <input type="text" name="kode_gejala" class="form-control" id="kode_gejala"
+                                        value="{{ $datagejala->kode_gejala }}" readonly>
                                 </div>
                                 <div class="mb-3">
                                     <label for="keterangan_gejala" class="form-label">Keterangan Gejala</label>
@@ -30,8 +30,8 @@
                                         value="{{ $datagejala->solusi->keterangan }}">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="keterangan_gejalagambar_gejala" class="form-label"> Gambar
-                                            Gejala
+                                    <label for="keterangan_gejalagambar_gejala" class="form-label"> <strong>Gambar
+                                            Gejala</strong>
                                     </label>
                                     <img width="700" src="/imageGejala/{{ $datagejala->gambar }}" alt=""
                                         srcset="">
@@ -51,7 +51,7 @@
                                 </div>
                                 <div id="ubahSolusi">
                                     <div class="col-12 mb-3">
-                                        {{-- <label for="id_gejala" class="form-label">ID Gejala</label> --}}
+                                        {{-- <label for="kode_gejala" class="form-label">ID Gejala</label> --}}
                                         <div>Pilih Jenis Solusi</div>
                                         <select id="solusi_old" class="form-select form-select-sm w-100"
                                             aria-label="Small select example" name="solusi_baru" style="width: 100%">
@@ -72,20 +72,17 @@
                                             Solusi Baru</button>
                                     </div>
                                 </div>
-                               <div class="row d-flex justify-content-center">
-                                    <div class="col-12 mb-3 d-flex justify-content-center">
-                                        <button type="submit" class="btn btn-primary d-flex justify-content-center">Submit</button>
-                                    </div>
-                               </div>
+                            </div>
+                            <div class=" col-6 mb-3 d-flex justify-content-center">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
                         </div>
-                       
-                        </form>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
-    </div>
+
 
     <script>
         let gambar = document.getElementById('ubahGambar');

@@ -19,7 +19,7 @@ class Konsultasi extends Migration
             $table->foreign('nrp')->references('nrp')->on('users')->onDelete('cascade');
             $table->string('shift');
             $table->string('kode_reject')->nullable();
-            $table->foreign('kode_reject')->references('id_reject')->on('db_reject')->onDelete('cascade');
+            $table->foreign('kode_reject')->references('kode_reject')->on('db_reject')->onDelete('cascade');
             $table->timestamps();
         });
     }
