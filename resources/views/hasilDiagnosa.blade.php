@@ -33,7 +33,7 @@
                                                 <td class="text-start">
                                                     <ul>
                                                         @foreach ($gejala as $value)
-                                                            <li>{{ $value->id_gejala }} | {{ $value->nama }}</li>
+                                                            <li>{{ $value->kode_gejala }} | {{ $value->nama }}</li>
                                                         @endforeach
                                                     </ul>
                                                 </td>

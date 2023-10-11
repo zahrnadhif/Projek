@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\KonsultasiModel;
+use App\Models\RejectModel;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
@@ -55,7 +56,27 @@ class ApiController extends Controller
     public function grafikRiwayat()
     {
         $currentMonth = Carbon::now()->month;
-        $data = KonsultasiModel::whereMonth('created_at', $currentMonth)->get();
+        $konsultasi = KonsultasiModel::whereMonth('created_at', $currentMonth)->get();
+        $reject = RejectModel::all();
+        $data = [];
+
+        foreach ($reject as $key) {
+            $listReject[] = $key->kode_reject;
+            $namaReject[] = $key->nama;
+        }
+
+        // $angka = 0;
+
+        // foreach ($konsultasi as $key) {
+        for ($i = 0; $i < count($listReject); $i++) {
+            $data[] = [
+                'reject' => $namaReject[$i],
+                'jumlah' => $konsultasi->where('kode_reject', $listReject[$i])->count()
+            ];
+        }
+
+        // $angka++;
+        // }
 
         return $data;
         // return $exuser;

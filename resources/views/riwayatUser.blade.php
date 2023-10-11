@@ -25,9 +25,10 @@
                                         <td>{{ $no++ }}</td>
                                         <td>{{ $key->nrp }}</td>
                                         <td>{{ $key->users->name }}</td>
-                                        @if ($key->null)
+                                        @if ($key->kode_reject == null)
                                             <td>Tidak Ditemukan</td>
                                         @else
+                                            {{-- @dd($key->reject); --}}
                                             <td>{{ $key->reject->nama }}</td>
                                         @endif
                                         {{-- <thd>KERUSAKAN</td> --}}
@@ -70,7 +71,7 @@
             $.get(
                 "/modal/detail/riwayat" + "/" + id, {},
                 function(data) {
-                    $("#modalDetailRejectLabel").html("Detail Riwayat Konsultasi " ); //Untuk kasih judul di modal
+                    $("#modalDetailRejectLabel").html("Detail Riwayat Konsultasi "); //Untuk kasih judul di modal
                     $("#modalDetailReject").modal("show"); //kalo ID pake "#" kalo class pake "."
                     $('#modalDetailReject .modal-body').load("/modal/detail/riwayat" + "/" + id);
                 }

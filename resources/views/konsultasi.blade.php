@@ -13,12 +13,12 @@
                                     <div class="card-body">
                                         <div class="row mt-2">
                                             <div class="col">
-                                                <div class="fs-3 fw-semibold">{{ $gejalaPertama->id_gejala }} |
+                                                <div class="fs-3 fw-semibold">{{ $gejalaPertama->kode_gejala }} |
                                                     {{ $gejalaPertama->nama }} </div>
                                             </div>
                                         </div>
                                         <input type="text" name="gejala" id=""
-                                            value=" {{ $gejalaPertama->id_gejala }}" hidden>
+                                            value=" {{ $gejalaPertama->kode_gejala }}" hidden>
                                         @if ($bukanGejala == null)
                                         @else
                                             @for ($i = 0; $i < count($bukanGejala); $i++)
@@ -42,7 +42,7 @@
                                         @endif
                                         <div class="row mt-3">
                                             <div class="col">
-                                                <img src="{{ asset('gambarReject/1KJ.jpeg') }}" alt=""
+                                                <img src="/imageGejala/{{ $gejalaPertama->gambar }}  " alt=""
                                                     style="width:400px; height:400px; ">
                                             </div>
                                         </div>

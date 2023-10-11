@@ -132,14 +132,14 @@
                                 @foreach ($data as $reject)
                                     <tr>
                                         <td class="text-center">{{ $no++ }}</td>
-                                        <td class="text-center">{{ $reject->id_reject }}</td>
+                                        <td class="text-center">{{ $reject->kode_reject }}</td>
                                         <td class="text-center">{{ $reject->nama }}</td>
                                         {{-- <td class="text-center">
                                         </td> --}}
                                         <td class="text-center">
                                             <button type="button" class="btn btn-primary mx-1"
-                                                onclick="editReject('{{ $reject->id_reject }}')">Ubah</button>
-                                            <button type="button" onclick="deleteRecord('{{ $reject->id_reject }}')"
+                                                onclick="editReject('{{ $reject->kode_reject }}')">Ubah</button>
+                                            <button type="button" onclick="deleteRecord('{{ $reject->kode_reject }}')"
                                                 class="btn btn-danger" id="delete">Hapus</button>
                                             <meta name="csrf-token" content="{{ csrf_token() }}">
                                         </td>
@@ -168,9 +168,9 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-12 mb-3">
-                                <label for="id_reject" class="form-label">Kode Reject</label>
-                                <input type="text" class="form-control border-primary" id="id_reject" name="id_reject"
-                                    aria-describedby="emailHelp" required readonly>
+                                <label for="kode_reject" class="form-label">Kode Reject</label>
+                                <input type="text" class="form-control border-primary" id="kode_reject"
+                                    name="kode_reject" aria-describedby="emailHelp" required readonly>
                             </div>
                             <div class="col-12 mb-3">
                                 <label for="nama_reject" class="form-label">Nama Reject</label>
@@ -211,10 +211,10 @@
         </div>
     </div>
     <script>
-        let idReject = document.getElementById('id_reject');
+        let idReject = document.getElementById('kode_reject');
 
         let number = {{ $data->count() }};
-        document.getElementById('id_reject').value = 'R' + (number + 1);
+        document.getElementById('kode_reject').value = 'R' + (number + 1);
         // console.log(number);
 
         function editReject(reject) {

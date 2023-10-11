@@ -16,27 +16,27 @@
                 </div>
             </div>
             <div class="row mt-2">
-              <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">Data Riwayat Konsultasi</div>
-                    <div class="card-body">
-                        <table class="table table-bordered data-table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">NO</th>
-                                    <th scope="col">NRP</th>
-                                    <th scope="col">NAMA</th>
-                                    <th scope="col">KERUSAKAN</th>
-                                    <th scope="col">DETAIL</th>
-                                </tr>
-                            </thead>
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">Data Riwayat Konsultasi</div>
+                        <div class="card-body">
+                            <table class="table table-bordered data-table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">NO</th>
+                                        <th scope="col">NRP</th>
+                                        <th scope="col">NAMA</th>
+                                        <th scope="col">KERUSAKAN</th>
+                                        <th scope="col">DETAIL</th>
+                                    </tr>
+                                </thead>
 
-                            <tbody>
-                            </tbody>
-                        </table>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
-              </div>
             </div>
         </div>
     </div>
@@ -112,7 +112,7 @@
 
         var xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root, {
             maxDeviation: 0.3,
-            categoryField: "country",
+            categoryField: "reject",
             renderer: xRenderer,
             tooltip: am5.Tooltip.new(root, {})
         }));
@@ -131,9 +131,9 @@
             name: "Series 1",
             xAxis: xAxis,
             yAxis: yAxis,
-            valueYField: "value",
+            valueYField: "jumlah",
             sequencedInterpolation: true,
-            categoryXField: "country",
+            categoryXField: "reject",
             tooltip: am5.Tooltip.new(root, {
                 labelText: "{valueY}"
             })
@@ -154,49 +154,60 @@
 
 
         // Set data
-        var data = [{
-            country: "Kulit Jeruk",
-            value: 30
-        }, {
-            country: "Berkawah",
-            value: 26
-        }, {
-            country: "Beruntus",
-            value: 21
-        }, {
-            country: "Lecet",
-            value: 17
-        }, {
-            country: "Peel Off",
-            value: 11
-        }, {
-            country: "Belang",
-            value: 8
-        }, {
-            country: "Meler",
-            value: 5
-        }, {
-            country: "Dust Spray",
-            value: 3
-        }, {
-            country: "Sanding Mark",
-            value: 2
-        }, {
-            country: "Poor Gloss",
-            value: 0
-        }, {
-            country: "Dirty",
-            value: 0
-        }, {
-            country: "Cipratan Cat",
-            value: 0
-        }, {
-            country: "Tipis",
-            value: 0
-        }];
+        // var data = [{
+        //     country: "Kulit Jeruk",
+        //     value: 30
+        // }, {
+        //     country: "Berkawah",
+        //     value: 26
+        // }, {
+        //     country: "Beruntus",
+        //     value: 21
+        // }, {
+        //     country: "Lecet",
+        //     value: 17
+        // }, {
+        //     country: "Peel Off",
+        //     value: 11
+        // }, {
+        //     country: "Belang",
+        //     value: 8
+        // }, {
+        //     country: "Meler",
+        //     value: 5
+        // }, {
+        //     country: "Dust Spray",
+        //     value: 3
+        // }, {
+        //     country: "Sanding Mark",
+        //     value: 2
+        // }, {
+        //     country: "Poor Gloss",
+        //     value: 0
+        // }, {
+        //     country: "Dirty",
+        //     value: 0
+        // }, {
+        //     country: "Cipratan Cat",
+        //     value: 0
+        // }, {
+        //     country: "Tipis",
+        //     value: 0
+        // }];
+        $.ajax({
+            url: "/grafik",
+            type: "GET",
+            dataType: "json",
+            success: function(data) {
+                console.log(data);
+                xAxis.data.setAll(data);
+                series.data.setAll(data);
+            },
+            error: function() {
+                console.log('Error data sat mengambil total Reject');
+            }
+        });
 
-        xAxis.data.setAll(data);
-        series.data.setAll(data);
 
 
         // Make stuff animate on load
@@ -213,8 +224,13 @@
                 serverSide: true,
                 ajax: "{{ route('dataRiwayat') }}",
                 columns: [{
-                        data: 'nrp',
-                        name: 'nrp'
+                        data: null,
+                        searchable: false,
+                        orderable: false,
+                        render: function(data, type, full, meta) {
+                            // This function returns the row number
+                            return meta.row + 1;
+                        }
                     },
                     {
                         data: 'nrp',

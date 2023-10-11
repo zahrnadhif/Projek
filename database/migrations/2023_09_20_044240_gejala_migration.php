@@ -14,7 +14,7 @@ class GejalaMigration extends Migration
     public function up()
     {
         Schema::create('db_gejala', function (Blueprint $table) {
-            $table->string('id_gejala')->primary();
+            $table->string('kode_gejala')->primary();
             $table->string('nama');
             $table->string('gambar')->nullable();
             $table->string('kode_solusi');

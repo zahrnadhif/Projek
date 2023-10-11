@@ -69,6 +69,7 @@ Route::get('/tambahGejala', [GejalaController::class, 'tambahGejala']);
 Route::post('/insertGejala', [GejalaController::class, 'insertGejala']);
 Route::delete('/gejala/{gejala}', [GejalaController::class, 'destroyGejala'])->middleware('auth');
 Route::get('/data/konsultasi', [RejectController::class, 'dataKonsultasi'])->name('perbaikan');
+Route::delete('/riwayat/konsultasi/hapus/{kode}', [RejectController::class, 'destroyKonsultasi']);
 Route::get('/data/perbaikan', [RejectController::class, 'dataPerbaikan']);
 Route::get('/modal/detail/perbaikan/{id}', [RejectController::class, 'modalPerbaikan'])->middleware('auth');
 Route::post('/isi/perbaikan/{id}', [RejectController::class, 'isiPerbaikan']);
@@ -87,6 +88,7 @@ Route::get('/login', function () {
 //Api
 Route::get('/dtkyrw/{nrp}', [ApiController::class, 'dtkyrw']);
 Route::get('/api/riwayat/', [ApiController::class, 'dataRiwayat'])->name('dataRiwayat');
+Route::get('/grafik', [ApiController::class, 'grafikRiwayat']);
 
 //Auth
 //Login 

@@ -15,11 +15,11 @@ class RejectGejalaModel extends Model
 
     public function gejala()
     {
-        return $this->belongsTo(GejalaModel::class, 'kode_gejala', 'id_gejala');
+        return $this->belongsTo(GejalaModel::class, 'kode_gejala', 'kode_gejala');
     }
 
     public function reject()
     {
-        return $this->belongsTo(RejectModel::class, 'kode_reject', 'id_reject');
+        return $this->belongsTo(RejectModel::class, 'kode_reject', 'kode_reject');
     }
 }

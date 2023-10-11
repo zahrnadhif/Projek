@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class RejectModel extends Model
 {
     use HasFactory;
-    protected $primaryKey = 'id_reject';
+    protected $primaryKey = 'kode_reject';
     protected $table = 'db_reject';
     protected $guarded = [];
     public $incrementing = false;

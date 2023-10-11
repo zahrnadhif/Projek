@@ -14,7 +14,7 @@ class CreateRejectsTable extends Migration
     public function up()
     {
         Schema::create('db_reject', function (Blueprint $table) {
-            $table->string('id_reject')->primary();
+            $table->string('kode_reject')->primary();
             $table->string('nama');
             $table->timestamps();
         });

@@ -18,6 +18,6 @@ class KonsultasiModel extends Model
 
     public function reject()
     {
-        return $this->belongsTo(RejectModel::class, 'kode_reject', 'id_reject');
+        return $this->belongsTo(RejectModel::class, 'kode_reject', 'kode_reject');
     }
 }

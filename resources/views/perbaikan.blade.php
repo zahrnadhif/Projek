@@ -28,7 +28,7 @@
                             <td>{{ $key->keterangan }}</td>
                             <td>{{ $key->created_at }}</td>
                             <td>
-                                <button type="button" onclick="detailReject({{ $key->id }})"
+                                <button type="button" onclick="detailReject({{ $key->kode_konsultasi }})"
                                     class="btn btn-primary">Detail</button>
                             </td>
                         </tr>

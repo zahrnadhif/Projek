@@ -34,7 +34,7 @@ class GejalaController extends Controller
         // ]);
         // dd($request);
         //Custom nama gambar
-        $filename = 'image_' .  $request->id_gejala . '.' . $request->gambar->getClientOriginalExtension();
+        $filename = 'image_' .  $request->kode_gejala . '.' . $request->gambar->getClientOriginalExtension();
 
         // dd($filename);
 
@@ -48,10 +48,11 @@ class GejalaController extends Controller
             // dd('1');
             // Membuat id solusi baru
             $dataSolusi = SolusiModel::all();
-            $lastSolusi = $dataSolusi->last();
+            $lastSolusi = $dataSolusi->count();
             // Remove 'S' and convert to an integer
-            $lastId = (int)str_replace('S', '', $lastSolusi->id_solusi);
-            $newId = 'S' . ($lastId + 1);
+            // $lastId = (int)str_replace('S', '', $lastSolusi->id_solusi);
+            // $lastSolusi = $dataSolusi->count();
+            $newId = 'S' . ($lastSolusi + 1);
 
             SolusiModel::create([
                 'id_solusi' =>  $newId,
@@ -60,7 +61,7 @@ class GejalaController extends Controller
 
             // Membuat id Gejala Baru
             $data = GejalaModel::create([
-                'id_gejala' => $request->id_gejala,
+                'kode_gejala' => $request->kode_gejala,
                 'nama' => $request->keterangan,
                 'kode_solusi' => $newId,
                 'gambar' => $filename
@@ -69,7 +70,7 @@ class GejalaController extends Controller
             // dd('2');
             // Membuat id Gejala Baru
             $data = GejalaModel::create([
-                'id_gejala' => $request->id_gejala,
+                'kode_gejala' => $request->kode_gejala,
                 'nama' => $request->keterangan,
                 'kode_solusi' => $request->solusi,
                 'gambar' => $filename
@@ -80,8 +81,8 @@ class GejalaController extends Controller
         $dataReject = RejectModel::all();
         foreach ($dataReject as $key) {
             RejectGejalaModel::create([
-                'kode_reject' => $key->id_reject,
-                'kode_gejala' =>  $request->id_gejala
+                'kode_reject' => $key->kode_reject,
+                'kode_gejala' =>  $request->kode_gejala
             ]);
         }
 
@@ -93,7 +94,7 @@ class GejalaController extends Controller
 
     public function destroyGejala($gejala)
     {
-        $data = GejalaModel::where('id_gejala', $gejala)->first();
+        $data = GejalaModel::where('kode_gejala', $gejala)->first();
         $data->delete();
         // return view('modalEditReject', compact('data'));
     }
@@ -108,7 +109,7 @@ class GejalaController extends Controller
 
     public function updateGejala(Request $request, $id)
     {
-        $datagejala = GejalaModel::where('id_gejala', $id)->first();
+        $datagejala = GejalaModel::where('kode_gejala', $id)->first();
 
         //Update data dasar 
 
@@ -117,7 +118,7 @@ class GejalaController extends Controller
         ]);
         if ($request->gambar_baru != null) {
             //Custom nama gambar
-            $filename = 'image_' .  $request->id_gejala . '.' . $request->gambar_baru->getClientOriginalExtension();
+            $filename = 'image_' .  $request->kode_gejala . '.' . $request->gambar_baru->getClientOriginalExtension();
 
             // dd($filename);
 
@@ -129,17 +130,18 @@ class GejalaController extends Controller
             ]);
         }
 
-        if ($request->solusi_baru != null) {
+        if ($request->solusi_baru != null || $request->keterangan_solusi_baru != null) {
             $cekSolusi = $request->keterangan_solusi_baru;
             // dd($cekSolusi);
+
             if ($cekSolusi != null) {
                 // dd('1');
                 // Membuat id solusi baru
                 $dataSolusi = SolusiModel::all();
-                $lastSolusi = $dataSolusi->last();
+                $lastSolusi = $dataSolusi->count();
                 // Remove 'S' and convert to an integer
-                $lastId = (int)str_replace('S', '', $lastSolusi->id_solusi);
-                $newId = 'S' . ($lastId + 1);
+                // $lastId =  $lastSolusi;
+                $newId = 'S' . ($lastSolusi + 1);
 
                 SolusiModel::create([
                     'id_solusi' =>  $newId,
@@ -148,13 +150,14 @@ class GejalaController extends Controller
 
                 // Membuat id Gejala Baru
                 $datagejala->update([
-                    'kode_solusi' => $request->keterangan_solusi_baru,
+                    'kode_solusi' => $newId,
                 ]);
             } else {
                 // dd('2');
-                // Membuat id Gejala Baru
+                // Update Solusi Gejala Baru
+
                 $datagejala->update([
-                    'kode_solusi' => $request->solusi_baru,
+                    'kode_solusi' =>  $request->solusi_baru,
                 ]);
             }
         }

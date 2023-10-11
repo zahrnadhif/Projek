@@ -20,7 +20,7 @@ class RejectSeeder extends Seeder
     {
         $reject = [
             [
-                'id_reject' => 'R1',
+                'kode_reject' => 'R1',
                 'nama' => 'orange peel',
             ],
         ];
@@ -46,27 +46,27 @@ class RejectSeeder extends Seeder
 
         $gejala = [
             [
-                'id_gejala' => 'G1',
+                'kode_gejala' => 'G1',
                 'nama' => 'Adanya gelombang yang menyerupai kulit jeruk pada permukaan cat',
                 'kode_solusi' => 'S1'
             ],
             [
-                'id_gejala' => 'G2',
+                'kode_gejala' => 'G2',
                 'nama' => 'Adanya cat yang telalu kental pada permukaan cat',
                 'kode_solusi' => 'S1'
             ],
             [
-                'id_gejala' => 'G3',
+                'kode_gejala' => 'G3',
                 'nama' => 'Adanya cat yang telalu tebal pada satu sisi',
                 'kode_solusi' => 'S2'
             ],
             [
-                'id_gejala' => 'G4',
+                'kode_gejala' => 'G4',
                 'nama' => 'Pengecatan cat yang dilakukan operator terlalu dekat',
                 'kode_solusi' => 'S3'
             ],
             [
-                'id_gejala' => 'G5',
+                'kode_gejala' => 'G5',
                 'nama' => 'Operator menggunakan angin yang terlalu tinggi saat proses pengecatan',
                 'kode_solusi' => 'S4'
             ]
