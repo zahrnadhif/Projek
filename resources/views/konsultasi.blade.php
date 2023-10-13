@@ -19,6 +19,8 @@
                                         </div>
                                         <input type="text" name="gejala" id=""
                                             value=" {{ $gejalaPertama->kode_gejala }}" hidden>
+                                        {{-- <input type="text" name="reject" id=""
+                                            value=" {{ $gejalaPertama->kode_reject }}" hidden> --}}
                                         @if ($bukanGejala == null)
                                         @else
                                             @for ($i = 0; $i < count($bukanGejala); $i++)
