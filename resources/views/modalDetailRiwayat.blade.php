@@ -52,7 +52,7 @@
                     </td>
                 @else
                     <td class="fw-bold text-start">Solusi Perbaikan</td>
-                    <td class="text-start"> Tidak Ada </td>
+                    <td class="text-start"> Ganti Part </td>
                 @endif
             </tr>
             <tr>
