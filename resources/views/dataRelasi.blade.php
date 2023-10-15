@@ -3,7 +3,7 @@
     <div class="container-fluid mt-3">
         <div class="row justify-content-end mt-3">
             <div class="col-8 fs-4 fw-semibold">
-                Relasi Gejala & Reject
+                Data Gejala & Reject
             </div>
             <div class="col-4 d-flex justify-content-end">
                 <button type="button" class="btn btn-success mx-1" onclick="showGejala()">Data Gejala</button>
