@@ -82,7 +82,8 @@
                     <div class="card-body">
                         {{-- <a href="/tambahGejala" type="button" class="btn btn-success mb-2" data-bs-toggle="modal" data-bs-target="#tambah">Tambah</a>    --}}
                         <div cla ss="table-responsive">
-                            <table class="table table-bordered text-center">
+                            <table id="dtHorizontalVerticalExample" class="table table-striped table-bordered table-sm " cellspacing="0"
+                            width="100%">                                
                                 <thead>
                                     <th scope="col">No</th>
                                     <th scope="col">Alternatif</th>
@@ -258,5 +259,13 @@
                 }
             );
         }
+
+        $(document).ready(function () {
+            $('#dtHorizontalVerticalExample').DataTable({
+                "scrollX": true,
+                "scrollY": 550,
+            });
+            $('.dataTables_length').addClass('bs-select');
+        });
     </script>
 @endsection
