@@ -9,7 +9,7 @@
                             REJECT PAINTING
                         </div>
                         <div class="card-body">
-                            <div id="chartdiv" style="width: 300px; height: 300px;">
+                            <div id="chartdiv" style="width: 800px; height: 300px;">
                             </div>
                         </div>
                     </div>
