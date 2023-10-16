@@ -1,9 +1,27 @@
 @extends('main')
 @section('content')
     <div class="container-fluid">
+
+        <div class="row justify-content-end mt-3">
+            <div class="col-8 fs-4 fw-semibold">
+                Data Riwayat Konsultasi
+            </div>
+            <div class="col-4 d-flex justify-content-end">
+                <div class="col-3 mt-2"> 
+                    <button id="btnAll" type="button" class="btn btn-primary" onclick="aktif()">Data
+                    Hari Ini</button>
+                    <button id="btnToday" type="button" class="btn btn-primary" onclick="off()">Kembali</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Divider -->
+        <hr class="divider">
+
+
         <div class="row  mx-3 d-flex justify-content-center">
             <div class="col-12">
-                <div class="row d-flex justify-content-between mt-2">
+                {{-- <div class="row d-flex justify-content-between mt-2">
                     <div class="col-4">
                         <h4>Data Riwayat Konsultasi</h4>
                     </div>
@@ -13,52 +31,59 @@
                             Ini</button>
                         <button id="btnToday" type="button" class="btn btn-primary" onclick="off()">Kembali</button>
                     </div>
-                </div>
+                </div> --}}
             </div>
 
-
-
-            <table class="table table-bordered mx-3 mt-2" id="dataAll">
-                <thead>
-                    <tr>
-                        <th scope="col">NO</th>
-                        <th scope="col">NRP</th>
-                        <th scope="col">NAMA</th>
-                        <th scope="col">KERUSAKAN</th>
-                        <th scope="col">AKSI</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @php
-                        $no = 1;
-                    @endphp
-                    @foreach ($data as $key)
-                        <tr>
-                            <td>{{ $no++ }}</td>
-                            <td>{{ $key->nrp }}</td>
-                            <td>{{ $key->users->name }}</td>
-                            @if ($key->kode_reject == null)
-                                <td>Tidak Ditemukan</td>
-                            @else
-                                <td>{{ $key->reject->nama }}</td>
-                            @endif
-                            {{-- <thd>KERUSAKAN</td> --}}
-                            <td><button type="button" onclick="detailReject({{ $key->id }})"
-                                    class="btn btn-primary">Detail</button>
-                                @if (Auth::user()->isEngineering())
-                                    <button type="button" onclick="deleteRecord('{{ $key->id }}')"
-                                        class="btn btn-danger" id="delete">Hapus</button>
-                                @elseif(Auth::user()->isForeman())
-                                    <button type="button" onclick="detailPerbaikan({{ $key->id }})"
-                                        class="btn btn-primary">Perbaikan</button>
-                                @endif
-
-
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-header"> Riwayat Konsultasi</div>
+                        <div class="card-body">
+                            <table class="table table-bordered mx-3 mt-2" id="dataAll">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">NO</th>
+                                        <th scope="col">NRP</th>
+                                        <th scope="col">NAMA</th>
+                                        <th scope="col">KERUSAKAN</th>
+                                        <th scope="col">AKSI</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @php
+                                        $no = 1;
+                                    @endphp
+                                    @foreach ($data as $key)
+                                        <tr>
+                                            <td>{{ $no++ }}</td>
+                                            <td>{{ $key->nrp }}</td>
+                                            <td>{{ $key->users->name }}</td>
+                                            @if ($key->kode_reject == null)
+                                                <td>Tidak Ditemukan</td>
+                                            @else
+                                                <td>{{ $key->reject->nama }}</td>
+                                            @endif
+                                            {{-- <thd>KERUSAKAN</td> --}}
+                                            <td><button type="button" onclick="detailReject({{ $key->id }})"
+                                                    class="btn btn-primary">Detail</button>
+                                                @if (Auth::user()->isEngineering())
+                                                    <button type="button" onclick="deleteRecord('{{ $key->id }}')"
+                                                        class="btn btn-danger" id="delete">Hapus</button>
+                                                @elseif(Auth::user()->isForeman())
+                                                    <button type="button" onclick="detailPerbaikan({{ $key->id }})"
+                                                        class="btn btn-primary">Perbaikan</button>
+                                                @endif
+                
+                
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <table class="table table-bordered mx-3 mt-2" id="dataToday">
                 <thead>
                     <tr>
