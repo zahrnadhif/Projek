@@ -24,26 +24,31 @@
                                     <input type="text" name="keterangan_gejala" class="form-control"
                                         id="keterangan_gejala" value="{{ $datagejala->nama }}">
                                 </div>
-                                <div class="mb-3">
-                                    <label for="solusi" class="form-label">Solusi</label>
-                                    <input type="text" name="solusi" class="form-control" id="solusi"
-                                        value="{{ $datagejala->solusi->keterangan }}">
+                                <div class=" row mb-3 d-flex">
+                                    <div class="col-10">
+                                        <label for="solusi" class="form-label">Solusi</label>
+                                        <input type="text" name="solusi" class="form-control" id="solusi"
+                                            value="{{ $datagejala->solusi->keterangan }}">
+                                    </div>
+                                        <div class="col-2 mt-4"> <button class="btn btn-info d-flex justify-content-center"
+                                            type="button" onclick="updateSolusi()"> Ubah Solusi
+                                        </button></div>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="keterangan_gejalagambar_gejala" class="form-label"> <strong>Gambar
+                                <div class=" row mb-3">
+                                    <div class="col-6">
+                                        <label for="keterangan_gejalagambar_gejala" class="form-label"> <strong>Gambar
                                             Gejala</strong>
                                     </label>
-                                    <img width="700" src="/imageGejala/{{ $datagejala->gambar }}" alt=""
+                                    <img width="400" src="/imageGejala/{{ $datagejala->gambar }}" alt=""
                                         srcset="">
-                                    <div class="row d-flex justify-content-center">
-                                        <div class="col-3"><button class="btn btn-info d-flex justify-content-center"
-                                                type="button" onclick="updateGambar()"> Ubah
-                                                Gambar</button></div>
-                                        <div class="col-2"> <button class="btn btn-info d-flex justify-content-center"
-                                                type="button" onclick="updateSolusi()"> Ubah Solusi
-                                            </button></div>
                                     </div>
-
+                                        <div class="col-6 mt-5"><button class="btn btn-info d-flex justify-content-center"
+                                                type="button" onclick="updateGambar()"> Ubah
+                                                Gambar</button>
+                                            </div>
+                                        {{-- <div class="col-2"> <button class="btn btn-info d-flex justify-content-center"
+                                                type="button" onclick="updateSolusi()"> Ubah Solusi
+                                            </button></div> --}}
                                 </div>
                                 <div class="col-12 mb-3" id="ubahGambar">
                                     <label for="gambar_baru" class="form-label">Upload Gambar</label>
