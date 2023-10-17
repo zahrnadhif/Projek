@@ -27,22 +27,17 @@
         <div class="row mt-3">
             <div class="col-md-12">
                 <div class="card shadow rounded">
-                    <div class="card-header">
-                        <div class="row d-flex justify-content-between">
-                            <div class="col-6">
-                                <h5>Relasi Gejala & Reject</h5>
-                            </div>
-
-                        </div>
+                    <div class="card-header fs-4 fw-semibold">
+                     Relasi Gejala & Reject
                     </div>
                     <div class="card-body">
                         {{-- <a href="/tambahGejala" type="button" class="btn btn-success mb-2" data-bs-toggle="modal" data-bs-target="#tambah">Tambah</a>    --}}
-                        <div cla ss="table-responsive">
+                        <div class="table-responsive">
                             <table id="dtHorizontalVerticalExample" class="table table-striped table-bordered table-sm " cellspacing="0"
                             width="100%">                                
                                 <thead>
                                     <th scope="col">No</th>
-                                    <th scope="col">Alternatif</th>
+                                    <th scope="col ">Alternatif</th>
                                     <th scope="col">Aksi</th>
                                     @foreach ($dataGejala as $gejala)
                                         <th scope="col">{{ $gejala->kode_gejala }}</th>
@@ -58,7 +53,7 @@
                                             <td>{{ $reject->nama }}</td>
                                             @if (Auth::user()->isEngineering())
                                                 <td> <button class="btn btn-info" type="button"
-                                                        onclick="updateRelasi('{{ $reject->kode_reject }}')">Update</button>
+                                                        onclick="updateRelasi('{{ $reject->kode_reject }}')">Ubah</button>
                                                 </td>
                                             @endif
                                             @foreach ($dataGejala as $gejala)
@@ -218,6 +213,9 @@
 
         $(document).ready(function () {
             $('#dtHorizontalVerticalExample').DataTable({
+                // "fixedColumns": true,
+                // "paging": false,
+                // "scrollCollapse": true
                 "scrollX": true,
                 "scrollY": 550,
             });

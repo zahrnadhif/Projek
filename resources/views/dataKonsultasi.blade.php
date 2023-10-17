@@ -37,7 +37,7 @@
             <div class="row">
                 <div class="col">
                     <div class="card">
-                        <div class="card-header"> Riwayat Konsultasi</div>
+                        <div class="card-header fs-5 fw-semibold"> Riwayat Konsultasi</div>
                         <div class="card-body">
                             <table class="table table-bordered mx-3 mt-2" id="dataAll">
                                 <thead>
@@ -45,7 +45,7 @@
                                         <th scope="col">NO</th>
                                         <th scope="col">NRP</th>
                                         <th scope="col">NAMA</th>
-                                        <th scope="col">KERUSAKAN</th>
+                                        <th scope="col">REJECT</th>
                                         <th scope="col">AKSI</th>
                                     </tr>
                                 </thead>
@@ -59,8 +59,10 @@
                                             <td>{{ $key->nrp }}</td>
                                             <td>{{ $key->users->name }}</td>
                                             @if ($key->kode_reject == null)
+                                                {{-- jika reject tidak ditemukan --}}
                                                 <td>Tidak Ditemukan</td>
                                             @else
+                                                 {{-- jika reject ditemukan --}}
                                                 <td>{{ $key->reject->nama }}</td>
                                             @endif
                                             {{-- <thd>KERUSAKAN</td> --}}
@@ -70,12 +72,73 @@
                                                     <button type="button" onclick="deleteRecord('{{ $key->id }}')"
                                                         class="btn btn-danger" id="delete">Hapus</button>
                                                 @elseif(Auth::user()->isForeman())
-                                                    <button type="button" onclick="detailPerbaikan({{ $key->id }})"
-                                                        class="btn btn-primary">Perbaikan</button>
+                                                    {{-- jika reject tidak ditemukan maka akan muncul button perbaikan --}}
+                                                    @if ($key->kode_reject == null)
+                                                        <button type="button" onclick="detailPerbaikan({{ $key->id }})"
+                                                            class="btn btn-primary">Perbaikan</button>
+                                                    @else
+                                                    {{-- jika reject  ditemukan maka tidak akan muncul button perbaikan --}}
+                                                    @endif
                                                 @endif
+                                                
                 
                 
                                             </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+
+                            <table class="table table-bordered mx-3 mt-2" id="dataToday">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">NO</th>
+                                        <th scope="col">NRP</th>
+                                        <th scope="col">NAMA</th>
+                                        <th scope="col">REJECT</th>
+                                        <th scope="col">AKSI</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @php
+                                        $no = 1;
+                                    @endphp
+                                    @foreach ($dataToday as $key)
+                                        <tr>
+                                            <td>{{ $no++ }}</td>
+                                            <td>{{ $key->nrp }}</td>
+                                            <td>{{ $key->users->name }}</td>
+                                            @if ($key->kode_reject == null)
+                                                <td>Tidak Ditemukan</td>
+                                            @else
+                                                <td>{{ $key->reject->nama }}</td>
+                                            @endif
+                                            {{-- <thd>KERUSAKAN</td> --}}
+                                            {{-- <td><button type="button" onclick="detailReject({{ $key->id }})"
+                                                    class="btn btn-primary">Detail</button>
+                                                @if (Auth::user()->isEngineering())
+                                                    <button type="button" onclick="deleteRecord('{{ $key->id }}')"
+                                                        class="btn btn-danger" id="delete">Hapus</button>
+                                                @elseif(Auth::user()->isForeman())
+                                                    <button type="button" onclick="detailPerbaikan({{ $key->id }})"
+                                                        class="btn btn-primary">Perbaikan</button>
+                                                @endif
+                                            </td> --}}
+                                            <td><button type="button" onclick="detailReject({{ $key->id }})"
+                                                class="btn btn-primary">Detail</button>
+                                            @if (Auth::user()->isEngineering())
+                                                <button type="button" onclick="deleteRecord('{{ $key->id }}')"
+                                                    class="btn btn-danger" id="delete">Hapus</button>
+                                            @elseif(Auth::user()->isForeman())
+                                                {{-- jika reject tidak ditemukan maka akan muncul button perbaikan --}}
+                                                @if ($key->kode_reject == null)
+                                                    <button type="button" onclick="detailPerbaikan({{ $key->id }})"
+                                                        class="btn btn-primary">Perbaikan</button>
+                                                @else
+                                                {{-- jika reject  ditemukan maka tidak akan muncul button perbaikan --}}
+                                                @endif
+                                            @endif  
+                                            </td>   
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -84,45 +147,7 @@
                     </div>
                 </div>
             </div>
-            <table class="table table-bordered mx-3 mt-2" id="dataToday">
-                <thead>
-                    <tr>
-                        <th scope="col">NO</th>
-                        <th scope="col">NRP</th>
-                        <th scope="col">NAMA</th>
-                        <th scope="col">KERUSAKAN</th>
-                        <th scope="col">AKSI</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @php
-                        $no = 1;
-                    @endphp
-                    @foreach ($dataToday as $key)
-                        <tr>
-                            <td>{{ $no++ }}</td>
-                            <td>{{ $key->nrp }}</td>
-                            <td>{{ $key->users->name }}</td>
-                            @if ($key->kode_reject == null)
-                                <td>Tidak Ditemukan</td>
-                            @else
-                                <td>{{ $key->reject->nama }}</td>
-                            @endif
-                            {{-- <thd>KERUSAKAN</td> --}}
-                            <td><button type="button" onclick="detailReject({{ $key->id }})"
-                                    class="btn btn-primary">Detail</button>
-                                @if (Auth::user()->isEngineering())
-                                    <button type="button" onclick="deleteRecord('{{ $key->id }}')"
-                                        class="btn btn-danger" id="delete">Hapus</button>
-                                @elseif(Auth::user()->isForeman())
-                                    <button type="button" onclick="detailPerbaikan({{ $key->id }})"
-                                        class="btn btn-primary">Perbaikan</button>
-                                @endif
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
+            
         </div>
     </div>
 
@@ -239,5 +264,6 @@
             buttonAll.hidden = false;
             butonToday.hidden = true;
         }
+        
     </script>
 @endsection

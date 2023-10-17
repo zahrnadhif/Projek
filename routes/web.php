@@ -40,7 +40,7 @@ Route::post('/updateData/{id}', [RejectController::class, 'updateData']);
 //delete data
 Route::get('/deleteData/{id}', [RejectController::class, 'deleteData']);
 
-Route::get('/aturan', [RejectController::class, 'aturan'])->middleware('auth');
+Route::get('/aturan', [RejectController::class, 'aturan'])->name('relasiReject')->middleware('auth');
 Route::get('/partial/modal/relasi/{reject}', [RejectController::class, 'modalEditRelasi'])->name('relasi')->middleware('auth');
 Route::POST('/update/relasi/{reject}', [RejectController::class, 'updateRelasi']);
 

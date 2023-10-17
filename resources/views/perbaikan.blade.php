@@ -2,39 +2,47 @@
 @section('content')
     <div class="container-fluid ">
         <div class="row m-3">
-            <h4 class="m-2">Data Riwayat Perbaikan</h4>
-            <table class="table table-bordered" id="tabelKeseluruhan">
-                <thead>
-                    <th>No</th>
-                    <th>Jenis Reject</th>
-                    <th>Keterangan Perbaikan</th>
-                    <th>Tanggal dan Waktu</th>
-                    <th>Aksi</th>
-                </thead>
-                <tbody>
-                    @php
-                        $no = 1;
-                    @endphp
-                    @foreach ($data as $key)
-                        {{-- @dd($key->konsultasi) --}}
-                        <tr>
-                            <td>{{ $no++ }}</td>
-                            @if ($key->konsultasi->kode_reject == null)
-                                <td>Tidak Ditemukan</td>
-                            @else
-                                <td>{{ $key->konsultasi->reject->nama }}</td>
-                            @endif
-                            {{-- <td>{{ $key->konsultasi->reject }}</td> --}}
-                            <td>{{ $key->keterangan }}</td>
-                            <td>{{ $key->created_at }}</td>
-                            <td>
-                                <button type="button" onclick="detailReject({{ $key->kode_konsultasi }})"
-                                    class="btn btn-primary">Detail</button>
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
+            <div class="col">
+                <div class="card">
+                    <div class="card-header fs-5 fw-semibold"> 
+                        Data Riwayat Perbaikan
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-bordered" id="tabelKeseluruhan">
+                            <thead>
+                                <th>No</th>
+                                <th>Jenis Reject</th>
+                                <th>Keterangan Perbaikan</th>
+                                <th>Tanggal dan Waktu</th>
+                                <th>Aksi</th>
+                            </thead>
+                            <tbody>
+                                @php
+                                    $no = 1;
+                                @endphp
+                                @foreach ($data as $key)
+                                    {{-- @dd($key->konsultasi) --}}
+                                    <tr>
+                                        <td>{{ $no++ }}</td>
+                                        @if ($key->konsultasi->kode_reject == null)
+                                            <td>Tidak Ditemukan</td>
+                                        @else
+                                            <td>{{ $key->konsultasi->reject->nama }}</td>
+                                        @endif
+                                        {{-- <td>{{ $key->konsultasi->reject }}</td> --}}
+                                        <td>{{ $key->keterangan }}</td>
+                                        <td>{{ $key->created_at }}</td>
+                                        <td>
+                                            <button type="button" onclick="detailReject({{ $key->kode_konsultasi }})"
+                                                class="btn btn-primary">Detail</button>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
 
         </div>
     </div>

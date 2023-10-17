@@ -48,6 +48,7 @@
                                 <div class="col-12 mb-3" id="ubahGambar">
                                     <label for="gambar_baru" class="form-label">Upload Gambar</label>
                                     <input type="file" class="form-control" id="gambar_baru" name="gambar_baru">
+                                    
                                 </div>
                                 <div id="ubahSolusi">
                                     <div class="col-12 mb-3">
