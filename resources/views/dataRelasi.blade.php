@@ -38,7 +38,7 @@
                                     <th>No</th>
                                     <th>Kode Gejala</th>
                                     <th>Nama Gejala</th>
-                                    <th>Solusi</th>
+                                    {{-- <th>Solusi</th> --}}
                                 </thead>
                                 <tbody>
                                     @php
@@ -50,7 +50,7 @@
                                             <td class="text-center">{{ $dtgejalas->kode_gejala }} </td>
                                             <td>{{ $dtgejalas->nama }}</td>
 
-                                            <td>{{ $dtgejalas->solusi->keterangan }}</td>
+                                            {{-- <td>{{ $dtgejalas->solusi->keterangan }}</td> --}}
 
 
                                         </tr>

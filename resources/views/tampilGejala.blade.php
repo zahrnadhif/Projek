@@ -15,7 +15,7 @@
                             <div class="card-body" id="IsiModal">
                                 @csrf
                                 <div class="mb-3">
-                                    <label for="kode_gejala" class="form-label">Id Gejala</label>
+                                    <label for="kode_gejala" class="form-label">Kode Gejala</label>
                                     <input type="text" name="kode_gejala" class="form-control" id="kode_gejala"
                                         value="{{ $datagejala->kode_gejala }}" readonly>
                                 </div>

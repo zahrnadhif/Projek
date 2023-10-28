@@ -26,7 +26,7 @@
                                         <th scope="col">NO</th>
                                         <th scope="col">NRP</th>
                                         <th scope="col">NAMA</th>
-                                        <th scope="col">KERUSAKAN</th>
+                                        <th scope="col">REJECT</th>
                                         <th scope="col">DETAIL</th>
                                     </tr>
                                 </thead>

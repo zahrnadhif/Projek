@@ -68,7 +68,7 @@
                     <div class="modal-body">
                         <div class="row" id="IsiModal">
                             <div class="col-12 mb-3">
-                                <label for="kode_gejala" class="form-label">ID Gejala</label>
+                                <label for="kode_gejala" class="form-label">Kode Gejala</label>
                                 <input type="text" class="form-control border-primary" id="kode_gejala"
                                     name="kode_gejala" aria-describedby="emailHelp">
                             </div>

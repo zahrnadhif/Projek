@@ -176,7 +176,7 @@ class GejalaController extends Controller
     public function Penyebab()
     {
         $datagejala = GejalaModel::orderBy('created_at')->get();
-        $data = PenyebabModel::all();
+        $data = PenyebabModel::orderBy('created_at')->get();
         return view('penyebab', compact('data','datagejala'));
     }
 
