@@ -7,6 +7,7 @@ use App\Models\RejectModel;
 use App\Models\GejalaModel;
 use App\Models\KonsultasiGejalaModel;
 use App\Models\KonsultasiModel;
+use App\Models\PenyebabModel;
 use App\Models\PerbaikanModel;
 use App\Models\RejectGejalaModel;
 use Illuminate\Http\Request;
@@ -586,16 +587,21 @@ class RejectController extends Controller
     {
         $id = KonsultasiModel::where('id', $id)->first();
         $jenisReject = RejectModel::where('kode_reject', $reject)->first();
-        $getGejala = KonsultasiGejalaModel::where('kode_konsultasi', $id->id)->get();
+        $getGejala = KonsultasiGejalaModel::where('kode_konsultasi', $id->id)->first();
+        $penyebab = PenyebabModel::where('kode_gejala', $getGejala->kode_gejala)->get();
         // dd($getGejala);
-        if (count($getGejala) == 0) {
+        // dd($getGejala);
+        if ($getGejala == null ) {
             $gejala = null;
         }
-        foreach ($getGejala as $key) {
-            $gejala[] = GejalaModel::where('kode_gejala', $key->kode_gejala)->first();
+            {
+            // foreach ($getGejala as $key) {
+            //     dd($key);
+                $gejala[] = GejalaModel::where('kode_gejala', $getGejala->kode_gejala)->first();
+            // }
         }
         // dd($getGejala);
-        return view('hasilDiagnosa', compact('id', 'gejala', 'jenisReject', 'reject'));
+        return view('hasilDiagnosa', compact('id', 'gejala', 'jenisReject', 'reject','penyebab'));
     }
 
 

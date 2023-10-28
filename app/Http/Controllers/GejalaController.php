@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Gejala;
 use App\Models\GejalaModel;
+use App\Models\PenyebabModel;
 use App\Models\SolusiModel;
 use App\Models\RejectModel;
 use App\Models\RejectGejalaModel;
@@ -15,13 +16,12 @@ class GejalaController extends Controller
     public function gejala()
     {
         $datagejala = GejalaModel::orderBy('created_at')->get();
-        $dataSolusi = SolusiModel::all();
-        return view('gejala', compact('datagejala', 'dataSolusi'));
+        // $dataSolusi = SolusiModel::all();
+        return view('gejala', compact('datagejala'));
     }
 
     public function tambahGejala()
     {
-
         return view('tambahGejala');
     }
 
@@ -42,40 +42,40 @@ class GejalaController extends Controller
         $request->gambar->move(public_path('imageGejala'), $filename);
 
         //  Cek Solusi baru ada atau tidak  
-        $cekSolusi = $request->keterangan_solusi_baru;
+        // $cekSolusi = $request->keterangan_solusi_baru;
         // dd($cekSolusi);
-        if ($cekSolusi != null) {
+        // if ($cekSolusi != null) {
             // dd('1');
             // Membuat id solusi baru
-            $dataSolusi = SolusiModel::all();
-            $lastSolusi = $dataSolusi->count();
+            // $dataSolusi = SolusiModel::all();
+            // $lastSolusi = $dataSolusi->count();
             // Remove 'S' and convert to an integer
             // $lastId = (int)str_replace('S', '', $lastSolusi->id_solusi);
             // $lastSolusi = $dataSolusi->count();
-            $newId = 'S' . ($lastSolusi + 1);
+            // $newId = 'S' . ($lastSolusi + 1);
 
-            SolusiModel::create([
-                'id_solusi' =>  $newId,
-                'keterangan' => $request->keterangan_solusi_baru
-            ]);
+            // SolusiModel::create([
+            //     'id_solusi' =>  $newId,
+            //     'keterangan' => $request->keterangan_solusi_baru
+            // ]);
 
             // Membuat id Gejala Baru
             $data = GejalaModel::create([
                 'kode_gejala' => $request->kode_gejala,
                 'nama' => $request->keterangan,
-                'kode_solusi' => $newId,
+                // 'kode_solusi' => $newId,
                 'gambar' => $filename
             ]);
-        } else {
+        // } else {
             // dd('2');
             // Membuat id Gejala Baru
-            $data = GejalaModel::create([
-                'kode_gejala' => $request->kode_gejala,
-                'nama' => $request->keterangan,
-                'kode_solusi' => $request->solusi,
-                'gambar' => $filename
-            ]);
-        }
+            // $data = GejalaModel::create([
+            //     'kode_gejala' => $request->kode_gejala,
+            //     'nama' => $request->keterangan,
+            //     'kode_solusi' => $request->solusi,
+            //     'gambar' => $filename
+            // ]);
+        // }
 
         // Membuat id Relasi pada tabel Reject_Gejala
         $dataReject = RejectModel::all();
@@ -87,8 +87,8 @@ class GejalaController extends Controller
         }
 
         $datagejala = GejalaModel::all();
-        $dataSolusi = SolusiModel::all();
-        return redirect()->route('gejala', compact('datagejala', 'dataSolusi'))->with('success', 'Data Berhasil Di Tambahkan');
+        // $dataSolusi = SolusiModel::all();
+        return redirect()->route('gejala', compact('datagejala'))->with('success', 'Data Berhasil Di Tambahkan');
     }
 
 
@@ -102,9 +102,9 @@ class GejalaController extends Controller
     public function tampilGejala($id)
     {
         $datagejala = GejalaModel::find($id);
-        $dataSolusi = SolusiModel::all();
+        // $dataSolusi = SolusiModel::all();
 
-        return view('tampilGejala', compact('datagejala', 'dataSolusi'));
+        return view('tampilGejala', compact('datagejala'));
     }
 
     public function updateGejala(Request $request, $id)
@@ -172,4 +172,52 @@ class GejalaController extends Controller
 
         return redirect()->route('gejala')->with('success', 'Data Berhasil Di Hapus');
     }
+
+    public function Penyebab()
+    {
+        $datagejala = GejalaModel::orderBy('created_at')->get();
+        $data = PenyebabModel::all();
+        return view('penyebab', compact('data','datagejala'));
+    }
+
+    public function tambahPenyebab(Request $request)
+    {
+        // dd($request);
+        PenyebabModel::create([
+            'kode_penyebab' => $request->kode_penyebab,
+            'penyebab' => $request->penyebab,
+            'solusi' => $request->solusi,
+            'kode_gejala' => $request->kode_gejala
+        ]);
+        return redirect()->route('penyebab')->with('success', 'Data Berhasil Di tambahkan');
+    }
+
+    public function modalEditPenyebab($penyebab)
+    {
+        $data = PenyebabModel::where('kode_penyebab', $penyebab)->first();
+        $datagejala = GejalaModel::all();
+        return view('modalEditPenyebab', compact('data', 'datagejala'));
+    }
+
+    public function UpdatePenyebab(Request $request, $penyebab)
+    {
+        $idReject = PenyebabModel::Where('kode_penyebab', $penyebab)->first();
+        $idReject->update([
+            'penyebab' => $request->penyebab,
+            'solusi' => $request->solusi,
+            'kode_gejala' => $request->kode_gejala
+        ]);
+        $data = PenyebabModel::all(); //Memanggil  data pada tabel Reject
+
+        return redirect()->route('penyebab')->with('success', 'Data Berhasil Di Update');
+    }
+
+    public function destroyPenyebab($penyebab)
+    {
+        $data = PenyebabModel::where('kode_penyebab', $penyebab)->first();
+        $data->delete();
+        // return view('modalEditReject', compact('data'));
+    }
+
+
 }

@@ -13,9 +13,12 @@ class SolusiMigration extends Migration
      */
     public function up()
     {
-        Schema::create('db_solusi', function (Blueprint $table) {
-            $table->string('id_solusi')->primary();
-            $table->string('keterangan');
+        Schema::create('db_penyebab', function (Blueprint $table) {
+            $table->string('id_penyebab')->primary();
+            $table->string('kode_gejala');
+            $table->foreign('kode_gejala')->references('kode_gejala')->on('db_gejala')->onDelete('cascade');
+            $table->string('penyebab');
+            $table->string('solusi');
             $table->timestamps();
         });
     }

@@ -24,7 +24,7 @@
                                     <input type="text" name="keterangan_gejala" class="form-control"
                                         id="keterangan_gejala" value="{{ $datagejala->nama }}">
                                 </div>
-                                <div class=" row mb-3 d-flex">
+                                {{-- <div class=" row mb-3 d-flex">
                                     <div class="col-10">
                                         <label for="solusi" class="form-label">Solusi</label>
                                         <input type="text" name="solusi" class="form-control" id="solusi"
@@ -33,7 +33,7 @@
                                         <div class="col-2 mt-4"> <button class="btn btn-info d-flex justify-content-center"
                                             type="button" onclick="updateSolusi()"> Ubah Solusi
                                         </button></div>
-                                </div>
+                                </div> --}}
                                 <div class=" row mb-3">
                                     <div class="col-6">
                                         <label for="keterangan_gejalagambar_gejala" class="form-label"> <strong>Gambar
@@ -55,9 +55,9 @@
                                     <input type="file" class="form-control" id="gambar_baru" name="gambar_baru">
                                     
                                 </div>
-                                <div id="ubahSolusi">
+                                {{-- <div id="ubahSolusi">
                                     <div class="col-12 mb-3">
-                                        {{-- <label for="kode_gejala" class="form-label">ID Gejala</label> --}}
+                                        <label for="kode_gejala" class="form-label">ID Gejala</label>
                                         <div>Pilih Jenis Solusi</div>
                                         <select id="solusi_old" class="form-select form-select-sm w-100"
                                             aria-label="Small select example" name="solusi_baru" style="width: 100%">
@@ -77,7 +77,7 @@
                                         <button class="btn btn-success" type="button" onclick="tambahSolusi()">Tambah Jenis
                                             Solusi Baru</button>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                             <div class=" col-6 mb-3 d-flex justify-content-center">
                                 <button type="submit" class="btn btn-primary">Submit</button>
@@ -92,7 +92,7 @@
 
     <script>
         let gambar = document.getElementById('ubahGambar');
-        let solusi = document.getElementById('ubahSolusi');
+        // let solusi = document.getElementById('ubahSolusi');
         gambar.hidden = true;
         solusi.hidden = true;
         var test = 1;
@@ -101,9 +101,9 @@
             gambar.hidden = false;
         }
 
-        function updateSolusi() {
-            solusi.hidden = false;
-        }
+        // function updateSolusi() {
+        //     solusi.hidden = false;
+        // }
 
         //Select 2
         $(document).ready(function() {
@@ -113,16 +113,16 @@
         });
 
         // Tambah Jenis Solusi
-        function tambahSolusi() {
-            var html = "<div class='col-12 mb-3 kolom'> " +
-                "<span class='mb-3'>Keterangan Solusi</span>" +
-                "<textarea class='form-control' aria-label='With textarea' name='keterangan_solusi_baru'></textarea>" +
-                "</div>";
-            var buttonHapus =
-                "<button class='btn btn-danger btnHapus' type='button' onclick='closeModal()'>Hapus</button>"
-            $('#IsiModal').append(html);
-            $('#ButtonSolusiBaru').append(buttonHapus);
-        }
+        // function tambahSolusi() {
+        //     var html = "<div class='col-12 mb-3 kolom'> " +
+        //         "<span class='mb-3'>Keterangan Solusi</span>" +
+        //         "<textarea class='form-control' aria-label='With textarea' name='keterangan_solusi_baru'></textarea>" +
+        //         "</div>";
+        //     var buttonHapus =
+        //         "<button class='btn btn-danger btnHapus' type='button' onclick='closeModal()'>Hapus</button>"
+        //     $('#IsiModal').append(html);
+        //     $('#ButtonSolusiBaru').append(buttonHapus);
+        // }
 
         // Hapus barisan pada tag Body
         function closeModal() {

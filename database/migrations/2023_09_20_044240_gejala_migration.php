@@ -17,8 +17,8 @@ class GejalaMigration extends Migration
             $table->string('kode_gejala')->primary();
             $table->string('nama');
             $table->string('gambar')->nullable();
-            $table->string('kode_solusi');
-            $table->foreign('kode_solusi')->references('id_solusi')->on('db_solusi')->onDelete('cascade');
+            // $table->string('kode_solusi');
+            // $table->foreign('kode_solusi')->references('id_solusi')->on('db_solusi')->onDelete('cascade');
             $table->timestamps();
         });
     }

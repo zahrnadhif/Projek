@@ -19,6 +19,12 @@
                         <div class="sb-nav-link-icon"><i class="fa-solid fa-file-lines fa-2xl"></i></div>
                         Data Gejala
                     </a>
+
+                    <hr class="sidebar-divider my-1">
+                    <a class="nav-link" href="{{ url('/penyebab') }}">
+                        <div class="sb-nav-link-icon"><i class="fa-solid fa-file-lines fa-2xl"></i></div>
+                        Data Penyebab
+                    </a>
                 @elseif(Auth::user()->isForeman())
                     <hr class="sidebar-divider my-1">
                     <a class="nav-link" href="{{ url('/data/konsultasi') }}">

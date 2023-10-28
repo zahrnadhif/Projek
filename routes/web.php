@@ -64,6 +64,15 @@ Route::get('/modal/detail/riwayat/{id}', [RejectController::class, 'modalDetailR
 Route::get('/gejala', [GejalaController::class, 'gejala'])->name('gejala')->middleware('auth');
 Route::get('/tampil/gejala/{id}', [GejalaController::class, 'tampilGejala'])->middleware('auth');
 Route::post('/updateGejala/{id}', [GejalaController::class, 'updateGejala']);
+
+//Penyebab 
+Route::get('/penyebab', [GejalaController::class, 'penyebab'])->name('penyebab')->middleware('auth');
+Route::get('/penyebab-detail', [GejalaController::class, 'detailPenyebab'])->name('penyebab-detail')->middleware('auth');
+Route::post('/penyebab-tambah', [GejalaController::class, 'tambahPenyebab'])->middleware('auth');
+Route::get('/partial/modal/penyebab/{penyebab}', [GejalaController::class, 'modalEditPenyebab'])->middleware('auth');
+Route::post('/edit/penyebab/{penyebab}', [GejalaController::class, 'UpdatePenyebab']);
+Route::delete('/penyebab/{penyebab}', [GejalaController::class, 'destroyPenyebab']);
+
 //nambah data
 Route::get('/tambahGejala', [GejalaController::class, 'tambahGejala']);
 Route::post('/insertGejala', [GejalaController::class, 'insertGejala']);

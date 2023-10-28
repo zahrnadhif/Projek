@@ -52,17 +52,29 @@
                                             @endif
 
                                         </tr>
-                                        {{-- <tr>
-                                            <td class="fw-bold">Gejala Kerusakan</td>
-                                            <td class="text-start"></td>
-                                        </tr> --}}
+                                        <tr>
+                                            @if ($gejala != null)
+                                            <td class="fw-bold text-start">Penyebab</td>
+                                            <td class="text-start">
+                                                <ul>
+                                                    @foreach ($penyebab as $value)
+                                                        <li> {{ $value->penyebab }}</li>
+                                                    @endforeach
+                                                </ul>
+
+                                            </td>
+                                        @else
+                                            <td class="fw-bold text-start">Penyebab</td>
+                                            <td class="text-start"> </td>
+                                        @endif
+                                        </tr>
                                         <tr>
                                             @if ($gejala != null)
                                                 <td class="fw-bold text-start">Solusi Perbaikan</td>
                                                 <td class="text-start">
                                                     <ul>
-                                                        @foreach ($gejala as $value)
-                                                            <li> {{ $value->solusi->keterangan }}</li>
+                                                        @foreach ($penyebab as $value)
+                                                            <li> {{ $value->solusi }}</li>
                                                         @endforeach
                                                     </ul>
 

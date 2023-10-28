@@ -80,8 +80,8 @@
                                 <label for="gambar" class="form-label">Upload Gambar</label>
                                 <input type="file" class="form-control" id="gambar" name="gambar">
                             </div>
-                            <div class="col-12 mb-3">
-                                {{-- <label for="kode_gejala" class="form-label">ID Gejala</label> --}}
+                            {{-- <div class="col-12 mb-3">
+                                <label for="kode_gejala" class="form-label">ID Gejala</label>
                                 <div>Pilih Jenis Solusi</div>
                                 <select id="solusi_old" class="form-select form-select-sm w-100"
                                     aria-label="Small select example" name="solusi" style="width: 100%">
@@ -97,7 +97,7 @@
                                         Solusi</strong> "</p>
                                 <button class="btn btn-success" type="button" onclick="tambahSolusi()">Tambah Jenis
                                     Solusi</button>
-                            </div>
+                            </div> --}}
 
                         </div>
                     </div>
