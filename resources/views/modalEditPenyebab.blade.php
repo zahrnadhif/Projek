@@ -18,12 +18,12 @@
                     value="{{ $data->solusi }}" aria-describedby="emailHelp" required>
             </div>
             <div class="col-12 mb-3">
-                <div>Pilih Gejala</div>
+                <div>Pilih Reject</div>
                 <select id="solusi_old" class="form-select form-select-sm w-100"
-                    aria-label="Small select example" style="width: 100%" name="kode_gejala">
-                    <option value="{{ $data->kode_gejala }}">{{ $data->gejala->nama }}</option>
-                    @foreach ($datagejala as $gejala)
-                        <option value="{{ $gejala->kode_gejala }}">{{ $gejala->nama }}</option>
+                    aria-label="Small select example" style="width: 100%" name="kode_reject">
+                    <option value="{{ $data->kode_reject }}">{{ $data->reject->nama }}</option>
+                    @foreach ($dataReject as $reject)
+                        <option value="{{ $reject->kode_reject }}">{{ $reject->nama }}</option>
                     @endforeach
                 </select>
             </div>

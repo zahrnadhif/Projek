@@ -48,7 +48,7 @@ class RejectController extends Controller
 
     public function index()
     {
-        $data = RejectModel::all();
+        $data = RejectModel::orderBy('created_at')->get();
         return view('index', compact('data'));
     }
 
@@ -587,19 +587,26 @@ class RejectController extends Controller
     {
         $id = KonsultasiModel::where('id', $id)->first();
         $jenisReject = RejectModel::where('kode_reject', $reject)->first();
-        $getGejala = KonsultasiGejalaModel::where('kode_konsultasi', $id->id)->first();
-        $penyebab = PenyebabModel::where('kode_gejala', $getGejala->kode_gejala)->get();
-        // dd($getGejala);
-        // dd($getGejala);
-        if ($getGejala == null ) {
+        $getGejala = KonsultasiGejalaModel::where('kode_konsultasi', $id->id)->get();
+        
+        if (count($getGejala) == 0) {
             $gejala = null;
         }
-            {
-            // foreach ($getGejala as $key) {
-            //     dd($key);
-                $gejala[] = GejalaModel::where('kode_gejala', $getGejala->kode_gejala)->first();
-            // }
+        foreach ($getGejala as $key) {
+            $gejala[] = GejalaModel::where('kode_gejala', $key->kode_gejala)->first();
         }
+        $penyebab = PenyebabModel::where('kode_reject', $reject)->get();
+        // dd($getGejala);
+        // dd($getGejala);
+        // if ($getGejala == null ){
+        //     $gejala = null;
+        // }
+        //     {
+        //     // foreach ($getGejala as $key) {
+        //     //     dd($key);
+        //         $gejala[] = GejalaModel::where('kode_gejala', $getGejala->kode_gejala)->first();
+        //     // }
+        // }
         // dd($getGejala);
         return view('hasilDiagnosa', compact('id', 'gejala', 'jenisReject', 'reject','penyebab'));
     }
@@ -628,6 +635,7 @@ class RejectController extends Controller
         // dd('test');
         $dataKonsultasi = KonsultasiModel::where('id', $id)->first();
         $getGejala = KonsultasiGejalaModel::where('kode_konsultasi', $id)->get();
+        $penyebab = PenyebabModel::where('kode_reject', $dataKonsultasi->kode_reject)->get();
         // dd($getGejala);
         // dd($dataKonsultasi);
         if (count($getGejala) == 0) {
@@ -636,7 +644,7 @@ class RejectController extends Controller
         foreach ($getGejala as $key) {
             $gejala[] = GejalaModel::where('kode_gejala', $key->kode_gejala)->first();
         }
-        return view('modalDetailRiwayat', compact('dataKonsultasi', 'gejala'));
+        return view('modalDetailRiwayat', compact('dataKonsultasi', 'gejala', 'penyebab'));
     }
 
     public function modalPerbaikan($id)

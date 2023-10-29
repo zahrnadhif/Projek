@@ -14,9 +14,9 @@ class SolusiMigration extends Migration
     public function up()
     {
         Schema::create('db_penyebab', function (Blueprint $table) {
-            $table->string('id_penyebab')->primary();
-            $table->string('kode_gejala');
-            $table->foreign('kode_gejala')->references('kode_gejala')->on('db_gejala')->onDelete('cascade');
+            $table->string('kode_penyebab')->primary();
+            $table->string('kode_reject');
+            $table->foreign('kode_reject')->references('kode_reject')->on('db_reject')->onDelete('cascade');
             $table->string('penyebab');
             $table->string('solusi');
             $table->timestamps();

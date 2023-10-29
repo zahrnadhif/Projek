@@ -42,8 +42,13 @@ class ApiController extends Controller
                     return optional($model->users)->name;
                 })
                 ->addColumn('reject', function ($model) {
-                    return optional($model->reject)->nama;
+                    if ($model->reject) {
+                        return $model->reject->nama;
+                    } else {
+                        return 'Tidak ditemukan'; // Gantilah pesan ini dengan pesan yang sesuai
+                    }
                 })
+                
 
                 ->addColumn('created_at', function ($model) {
                     return $model->created_at->format('d/m/Y');

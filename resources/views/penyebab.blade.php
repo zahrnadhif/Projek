@@ -23,7 +23,7 @@
                                     <th scope="col" class="text-center">Kode Penyebab</th>
                                     <th scope="col" class="text-center">Penyebab</th>
                                     <th scope="col" class="text-center">Solusi</th>
-                                    <th scope="col" class="text-center">Gejala</th>
+                                    <th scope="col" class="text-center">Reject</th>
                                     {{-- <th scope="col" class="text-center">Gambar</th> --}}
                                     <th scope="col" class="text-center">Aksi</th>
                             </thead>
@@ -37,7 +37,7 @@
                                         <td class="text-center">{{ $penyebab->kode_penyebab }}</td>
                                         <td class="text-center">{{ $penyebab->penyebab }}</td>
                                         <td class="text-center">{{ $penyebab->solusi }}</td>
-                                        <td class="text-center">{{ $penyebab->gejala->nama }}</td>
+                                        <td class="text-center">{{ $penyebab->reject->nama }}</td>
                                         <td class="text-center">
                                             <button type="button" class="btn btn-primary mx-1"
                                                 onclick="editpenyebab('{{ $penyebab->kode_penyebab }}')">Ubah</button>
@@ -85,12 +85,12 @@
                                     name="solusi" aria-describedby="emailHelp" required>
                             </div>
                             <div class="col-12 mb-3">
-                                <div>Pilih Gejala</div>
+                                <div>Pilih Reject</div>
                                 <select id="solusi_old" class="form-select form-select-sm w-100"
-                                    aria-label="Small select example" style="width: 100%" name="kode_gejala">
+                                    aria-label="Small select example" style="width: 100%" name="kode_reject">
                                     <option value=" "> </option>
-                                    @foreach ($datagejala as $gejala)
-                                        <option value="{{ $gejala->kode_gejala }}">{{ $gejala->nama }}</option>
+                                    @foreach ($dataReject as $reject)
+                                        <option value="{{ $reject->kode_reject }}">{{ $reject->nama }}</option>
                                     @endforeach
                                 </select>
                             </div>

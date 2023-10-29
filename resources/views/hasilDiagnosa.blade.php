@@ -70,7 +70,7 @@
                                         </tr>
                                         <tr>
                                             @if ($gejala != null)
-                                                <td class="fw-bold text-start">Solusi Perbaikan</td>
+                                                <td class="fw-bold text-start">Solusi </td>
                                                 <td class="text-start">
                                                     <ul>
                                                         @foreach ($penyebab as $value)
@@ -80,7 +80,7 @@
 
                                                 </td>
                                             @else
-                                                <td class="fw-bold text-start">Solusi Perbaikan</td>
+                                                <td class="fw-bold text-start">Solusi </td>
                                                 <td class="text-start"> Ganti Part </td>
                                             @endif
                                         </tr>

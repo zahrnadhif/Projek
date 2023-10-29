@@ -175,9 +175,10 @@ class GejalaController extends Controller
 
     public function Penyebab()
     {
-        $datagejala = GejalaModel::orderBy('created_at')->get();
+        // $datagejala = GejalaModel::orderBy('created_at')->get();
+        $dataReject = RejectModel::orderBy('created_at')->get();
         $data = PenyebabModel::orderBy('created_at')->get();
-        return view('penyebab', compact('data','datagejala'));
+        return view('penyebab', compact('data','dataReject'));
     }
 
     public function tambahPenyebab(Request $request)
@@ -187,7 +188,7 @@ class GejalaController extends Controller
             'kode_penyebab' => $request->kode_penyebab,
             'penyebab' => $request->penyebab,
             'solusi' => $request->solusi,
-            'kode_gejala' => $request->kode_gejala
+            'kode_reject' => $request->kode_reject
         ]);
         return redirect()->route('penyebab')->with('success', 'Data Berhasil Di tambahkan');
     }
@@ -195,8 +196,9 @@ class GejalaController extends Controller
     public function modalEditPenyebab($penyebab)
     {
         $data = PenyebabModel::where('kode_penyebab', $penyebab)->first();
-        $datagejala = GejalaModel::all();
-        return view('modalEditPenyebab', compact('data', 'datagejala'));
+        // $datagejala = GejalaModel::all();
+        $dataReject = RejectModel::all();
+        return view('modalEditPenyebab', compact('data', 'dataReject'));
     }
 
     public function UpdatePenyebab(Request $request, $penyebab)
@@ -205,7 +207,8 @@ class GejalaController extends Controller
         $idReject->update([
             'penyebab' => $request->penyebab,
             'solusi' => $request->solusi,
-            'kode_gejala' => $request->kode_gejala
+            // 'kode_gejala' => $request->kode_gejala
+            'kode_reject' => $request->kode_reject
         ]);
         $data = PenyebabModel::all(); //Memanggil  data pada tabel Reject
 

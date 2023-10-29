@@ -13,9 +13,9 @@ class PenyebabModel extends Model
     protected $primaryKey = 'kode_penyebab';
     public $incrementing = false;
 
-    public function gejala()
+    public function reject()
     {
-        return $this->belongsTo(GejalaModel::class, 'kode_gejala', 'kode_gejala');
+        return $this->belongsTo(RejectModel::class, 'kode_reject', 'kode_reject');
     }
 
 }
